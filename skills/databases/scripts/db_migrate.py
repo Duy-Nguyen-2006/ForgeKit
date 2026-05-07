@@ -29,6 +29,7 @@ try:
     from pymongo import MongoClient
     MONGO_AVAILABLE = True
 except ImportError:
+    MongoClient = None
     MONGO_AVAILABLE = False
 
 try:
@@ -36,6 +37,8 @@ try:
     from psycopg2 import sql
     POSTGRES_AVAILABLE = True
 except ImportError:
+    psycopg2 = None
+    sql = None
     POSTGRES_AVAILABLE = False
 
 
@@ -83,7 +86,7 @@ class MigrationManager:
         """
         try:
             if self.db_type == "mongodb":
-                if not MONGO_AVAILABLE:
+                if MongoClient is None:
                     print("Error: pymongo not installed")
                     return False
                 self.client = MongoClient(self.connection_string)
@@ -93,7 +96,7 @@ class MigrationManager:
                 return True
 
             elif self.db_type == "postgres":
-                if not POSTGRES_AVAILABLE:
+                if psycopg2 is None:
                     print("Error: psycopg2 not installed")
                     return False
                 self.conn = psycopg2.connect(self.connection_string)

@@ -28,6 +28,7 @@ try:
     from pymongo import MongoClient
     MONGO_AVAILABLE = True
 except ImportError:
+    MongoClient = None
     MONGO_AVAILABLE = False
 
 try:
@@ -35,6 +36,8 @@ try:
     from psycopg2.extras import RealDictCursor
     POSTGRES_AVAILABLE = True
 except ImportError:
+    psycopg2 = None
+    RealDictCursor = None
     POSTGRES_AVAILABLE = False
 
 
@@ -95,7 +98,7 @@ class PerformanceAnalyzer:
         """Connect to database."""
         try:
             if self.db_type == "mongodb":
-                if not MONGO_AVAILABLE:
+                if MongoClient is None:
                     print("Error: pymongo not installed")
                     return False
                 self.client = MongoClient(self.connection_string)
@@ -104,7 +107,7 @@ class PerformanceAnalyzer:
                 return True
 
             elif self.db_type == "postgres":
-                if not POSTGRES_AVAILABLE:
+                if psycopg2 is None:
                     print("Error: psycopg2 not installed")
                     return False
                 self.conn = psycopg2.connect(self.connection_string)
@@ -180,10 +183,18 @@ class PerformanceAnalyzer:
 
             coll = self.db[coll_name]
 
-            # Check for collections scans
-            stats = coll.aggregate([
-                {"$collStats": {"storageStats": {}}}
-            ]).next()
+            # Check for collections scans. Stats access can be unavailable for
+            # restricted monitoring users, so keep analysis best-effort.
+            try:
+                stats_cursor = coll.aggregate([
+                    {"$collStats": {"storageStats": {}}}
+                ])
+                if hasattr(stats_cursor, "next"):
+                    stats_cursor.next()
+                else:
+                    next(iter(stats_cursor), None)
+            except Exception:
+                pass
 
             # Check if collection has indexes
             indexes = list(coll.list_indexes())
@@ -213,7 +224,10 @@ class PerformanceAnalyzer:
 
         # Get database metrics
         server_status = self.client.admin.command("serverStatus")
-        db_stats = self.db.command("dbStats")
+        try:
+            db_stats = self.db.command("dbStats")
+        except Exception:
+            db_stats = {}
 
         metrics = {
             "connections": server_status.get("connections", {}).get("current", 0),
@@ -370,7 +384,7 @@ class PerformanceAnalyzer:
         print("-" * 80)
         if report.slow_queries:
             for i, query in enumerate(report.slow_queries, 1):
-                print(f"\n{i}. Execution Time: {query.execution_time_ms:.2f}ms | Count: {query.count}")
+                print(f"\n{i}. Execution Time: {query.execution_time_ms:g}ms | Count: {query.count}")
                 if query.collection_or_table:
                     print(f"   Collection/Table: {query.collection_or_table}")
                 if query.index_used:

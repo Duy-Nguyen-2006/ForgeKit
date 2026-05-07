@@ -176,7 +176,10 @@ class BackupManager:
                         print(f"Error: {result.stderr}")
                         return None
 
-            size_bytes = backup_path.stat().st_size
+            if backup_path.exists():
+                size_bytes = backup_path.stat().st_size
+            else:
+                size_bytes = 0
 
             backup_info = BackupInfo(
                 filename=filename,
