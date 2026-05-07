@@ -34,6 +34,7 @@ Before routing, read `skills/registry.md` and choose the single best matching pr
 | docs/API docs/readme | `docs` | none initially |
 | deploy/publish/hosting | `deploy` | `security-scan` before production |
 | commit/push/PR | `git` | `code-review` before commit |
+| privacy/notifications/session hooks | hooks-runtime | hooks/<type>/HOOK.md |
 | large repo/refactor/symbol/find references | `context-engineering` | Serena MCP nếu có, `scout` nếu không |
 | noisy shell/test/build/log/diff | RTK if installed | native shell fallback |
 
@@ -65,5 +66,6 @@ Do not use RTK for file edits.
 - Do not load broad design/media/AI skills by default.
 - Do not read whole repositories or full reference directories.
 - Do not ask user to choose a skill.
+- Do not bypass privacy hook on final-report.
 
 Detailed rules: `skills/orchestrator/references/workflow-rules.md` — đọc khi cần giải quyết edge case.

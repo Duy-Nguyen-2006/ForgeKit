@@ -27,6 +27,31 @@
     "contextMode": false,
     "cavemem": false
   },
+  "hooks": {
+    "privacy": {
+      "enabled": true,
+      "config": "hooks/privacy/patterns.json",
+      "trigger": "before-output"
+    },
+    "notifications": {
+      "enabled": false,
+      "config": "hooks/config.json",
+      "channels": [
+        "telegram",
+        "discord",
+        "slack"
+      ],
+      "trigger": [
+        "task-complete",
+        "task-failed"
+      ]
+    },
+    "sessionStart": {
+      "enabled": true,
+      "config": "hooks/session-start/context-load.md",
+      "trigger": "session-start"
+    }
+  },
   "behavior": {
     "specFirst": true,
     "singleApprovalGate": true,

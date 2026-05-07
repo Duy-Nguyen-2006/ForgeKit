@@ -1,5 +1,6 @@
 .credentials.json
 .mcp.json
+hooks/config.json
 .forge.db*
 .forge_history
 cache/
