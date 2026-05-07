@@ -10,6 +10,8 @@ metadata:
 
 Purpose: route each approved `:ck:auto` task to the smallest useful skill/tool set.
 
+Before routing, read `skills/registry.md` and choose the single best matching primary skill.
+
 ## Priority
 
 1. ForgeCode native tools first: `fs_search`, `read`, `patch`, `write`, `shell`, `task`, `todo_write`.
