@@ -43,5 +43,6 @@ Orchestrator reads this file to route tasks. Internal only. Do not expose as a u
 | Skill | Trigger keywords | Load path |
 |---|---|---|
 | scout | codebase mới, chưa biết, explore, inspect, map project | skills/scout/SKILL.md |
+| context-engineering | codebase lớn, chưa biết, symbol, refactor cross-file, tìm function, unfamiliar repo | skills/context-engineering/SKILL.md |
 | project-organization | structure, folder, organize, refactor arch, layout | skills/project-organization/SKILL.md |
 | docs | tài liệu, README, docs, documentation, guide, changelog | skills/docs/SKILL.md |

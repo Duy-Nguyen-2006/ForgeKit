@@ -34,7 +34,7 @@ Before routing, read `skills/registry.md` and choose the single best matching pr
 | docs/API docs/readme | `docs` | none initially |
 | deploy/publish/hosting | `deploy` | `security-scan` before production |
 | commit/push/PR | `git` | `code-review` before commit |
-| large repo/refactor/symbol/find references | native search first, then Serena MCP | `scout` only if Serena unavailable |
+| large repo/refactor/symbol/find references | `context-engineering` | Serena MCP nếu có, scout nếu không |
 | noisy shell/test/build/log/diff | RTK if installed | native shell fallback |
 
 ## Serena MCP Use
