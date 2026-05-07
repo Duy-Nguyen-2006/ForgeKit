@@ -10,11 +10,16 @@ ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / ".forge"
 DIRS = ["commands", "agents", "skills", "integrations", "communication"]
 FILES = ["forgekit.json", "AGENTS.md", ".forge.toml", "README.md"]
+IGNORE_PATTERNS = [
+    "*.test.*",
+    "__pycache__",
+    ".pytest_cache",
+]
 
 
 def copy_path(src: Path, dst: Path) -> None:
     if src.is_dir():
-        shutil.copytree(src, dst)
+        shutil.copytree(src, dst, ignore=shutil.ignore_patterns(*IGNORE_PATTERNS))
     else:
         dst.parent.mkdir(parents=True, exist_ok=True)
         shutil.copy2(src, dst)
