@@ -1,0 +1,38 @@
+{
+  "name": "lgmmo-forgekit-installer",
+  "version": "0.1.0",
+  "description": "One-command installer for LGM MMO ForgeKit into the current project.",
+  "type": "module",
+  "bin": {
+    "lgmmo-forgekit-installer": "bin/lgmmo-forgekit-installer.js"
+  },
+  "files": [
+    "bin/",
+    "agents/",
+    "commands/",
+    "skills/",
+    "forgekit.json",
+    "AGENTS.md",
+    ".forge.toml",
+    "integrations/",
+    "communication/",
+    "README.md"
+  ],
+  "scripts": {
+    "test:installer": "node bin/lgmmo-forgekit-installer.js --help"
+  },
+  "keywords": [
+    "forgekit",
+    "forgecode",
+    "installer",
+    "lgmmo"
+  ],
+  "author": "LGM MMO",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

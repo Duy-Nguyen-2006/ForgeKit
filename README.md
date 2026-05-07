@@ -49,7 +49,47 @@ ForgeKit/
 
 ForgeCode is the primary runtime.
 
-### Option A — Use this repo directly
+### Option A — One-command install with npm
+
+For non-technical users, install ForgeKit into the current project directory:
+
+```bash
+npx lgmmo-forgekit-installer
+```
+
+Or install into a specific directory:
+
+```bash
+npx lgmmo-forgekit-installer --target ./my-project
+```
+
+This creates a portable `.forge/` runtime bundle:
+
+```text
+.forge/
+├── forgekit.json
+├── AGENTS.md
+├── .forge.toml
+├── commands/
+├── agents/
+├── skills/
+├── integrations/
+└── communication/
+```
+
+If existing files are present, the installer backs them up to `.forge-backup-<timestamp>/`. To replace without backup:
+
+```bash
+npx lgmmo-forgekit-installer --force
+```
+
+After install, open ForgeCode in that directory and use:
+
+```text
+:ck:auto <what you want built or fixed>
+```
+
+### Option B — Use this repo directly
 
 Clone or place this repo at:
 
@@ -78,7 +118,7 @@ The native command is:
 
 Do not use `/ck:auto` as the native ForgeCode command. Slash commands are compatibility syntax for other runtimes.
 
-### Option B — Generate `.forge/` runtime export
+### Option C — Generate `.forge/` runtime export
 
 From the repo root:
 
@@ -103,7 +143,19 @@ Use `.forge/` as a portable ForgeCode runtime bundle.
 
 ## Codex Setup
 
-Codex is supported as a compatibility export.
+Codex is supported as a compatibility export. The published `lgmmo-codex-installer@1.0.12` configures Codex against:
+
+```text
+https://api.krouter.net/v1
+```
+
+Run:
+
+```bash
+npx lgmmo-codex-installer@latest
+```
+
+Manual export path:
 
 Generate Codex files:
 
