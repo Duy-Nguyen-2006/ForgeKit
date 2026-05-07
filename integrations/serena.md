@@ -26,3 +26,20 @@ forge mcp reload
 ```
 
 ForgeKit rule: ForgeCode native first; Serena second for semantic code intelligence.
+
+## Setup
+
+1. Copy file MCP config:
+   ```sh
+   cp .mcp.json.example .mcp.json
+   ```
+2. ForgeCode đọc `.mcp.json` khi start — Serena tự available.
+
+## Khi nào agent dùng Serena vs native
+
+| Task | Tool |
+|---|---|
+| Tìm function/class definition | Serena: symbol_lookup |
+| Ai gọi function này | Serena: find_references |
+| Cross-file refactor | Serena: workspace_symbols |
+| Đọc file nhỏ, rõ path | native read |

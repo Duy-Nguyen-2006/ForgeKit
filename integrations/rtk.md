@@ -27,3 +27,17 @@ Health check:
 rtk gain
 forge-rtk-shell -c 'git status'
 ```
+
+## Setup cho ForgeCode
+
+1. Cài RTK:
+   ```sh
+   curl -fsSL https://raw.githubusercontent.com/rtk-ai/rtk/master/install.sh | sh
+   ```
+2. Init (chọn agent phù hợp — ForgeCode chưa có flag riêng, dùng fallback AGENTS.md):
+   ```sh
+   rtk init -g --codex   # dùng AGENTS.md injection mode
+   ```
+3. Kiểm tra: `rtk gain`
+
+Nếu chưa cài RTK: agent dùng native tools bình thường, không break.

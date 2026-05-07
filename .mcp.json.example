@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "serena": {
+      "command": "npx",
+      "args": ["-y", "@oraios/serena", "--project-root", "."]
+    }
+  }
+}
