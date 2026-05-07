@@ -1,5 +1,9 @@
 # ForgeKit
 
+[![npm version](https://img.shields.io/npm/v/lgmmo-forgekit-installer.svg)](https://www.npmjs.com/package/lgmmo-forgekit-installer)
+[![npm downloads](https://img.shields.io/npm/dm/lgmmo-forgekit-installer.svg)](https://www.npmjs.com/package/lgmmo-forgekit-installer)
+[![GitHub repo](https://img.shields.io/badge/GitHub-ForgeKit-181717?logo=github)](https://github.com/Duy-Nguyen-2006/ForgeKit)
+
 ForgeKit is a ForgeCode-native assistant kit for non-technical users.
 
 Primary user flow:
@@ -267,6 +271,20 @@ node skills/auto/scripts/claude-adapter.test.cjs
 ```
 
 Expected result: all tests pass.
+
+## Release Notes
+
+### 0.1.1
+
+- Added npm badges and quick install documentation.
+- Published ForgeKit installer from the GitHub source tree.
+- Documented `lgmmo-codex-installer@1.0.12` using `https://api.krouter.net/v1`.
+
+### 0.1.0
+
+- Added `npx lgmmo-forgekit-installer` for one-command ForgeKit installation.
+- Installs a portable `.forge/` runtime bundle into the current directory or `--target` path.
+- Backs up existing files to `.forge-backup-<timestamp>/` unless `--force` is used.
 
 ## Security
 
