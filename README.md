@@ -6,6 +6,46 @@
 
 ForgeKit is a ForgeCode-native assistant kit for non-technical users.
 
+## Quickstart: 3 steps
+
+1. Open a terminal in your project and install ForgeKit:
+   ```bash
+   npx lgmmo-forgekit-installer
+   ```
+2. Open ForgeCode in the same folder and ask for what you want:
+   ```text
+   :ck:auto build me a todo app
+   ```
+3. Read the Spec, approve it, then ForgeKit implements, verifies, and reports the result.
+
+If you are not technical, start with plain language. You do not need to choose skills or tools.
+
+## Example Requests
+
+Copy one and customize it:
+
+```text
+:ck:auto build me a clean landing page for my coffee shop
+:ck:auto fix the login bug where users cannot sign in
+:ck:auto refactor this large dashboard module without changing behavior
+:ck:auto add a Stripe checkout flow for monthly subscriptions
+:ck:auto review this project and tell me what is broken
+```
+
+For more copyable templates, see [`examples/ck-auto-templates.md`](examples/ck-auto-templates.md).
+
+## 30-second Demo Flow
+
+```text
+User: :ck:auto build me a todo app
+ForgeKit: writes a short Spec in Vietnamese
+User: đúng, làm đi
+ForgeKit: routes to the right skill, edits files, runs verification
+ForgeKit: reports changed files + how to test
+```
+
+For a video/GIF, record this exact flow in ForgeCode; no extra setup is required.
+
 Primary user flow:
 
 ```text
@@ -42,6 +82,10 @@ ForgeKit/
 ├── integrations/
 │   ├── rtk.md
 │   └── serena.md
+├── hooks/
+│   ├── privacy/
+│   ├── notifications/
+│   └── session-start/
 ├── communication/caveman.md
 └── scripts/
     ├── generate-forgecode.py
@@ -74,10 +118,12 @@ This creates a portable `.forge/` runtime bundle:
 ├── forgekit.json
 ├── AGENTS.md
 ├── .forge.toml
+├── .mcp.json.example
 ├── commands/
 ├── agents/
 ├── skills/
 ├── integrations/
+├── hooks/
 └── communication/
 ```
 
@@ -140,6 +186,7 @@ This creates:
 ├── agents/
 ├── skills/
 ├── integrations/
+├── hooks/
 └── communication/
 ```
 
@@ -273,6 +320,13 @@ node skills/auto/scripts/claude-adapter.test.cjs
 Expected result: all tests pass.
 
 ## Release Notes
+
+### 2.0.0
+
+- Rebuilt ForgeKit as a ForgeCode-native, `:ck:auto`-first assistant kit.
+- Added skill registry routing, context-engineering, non-tech UX skills, RTK/Serena setup, and hooks.
+- Added optional privacy, notifications, and session-start hook documentation.
+- Added README quickstart, demo flow, and copyable request templates.
 
 ### 0.1.1
 

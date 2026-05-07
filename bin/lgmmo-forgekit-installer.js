@@ -24,7 +24,10 @@ Installs ForgeKit files into the current directory:
   .forge/agents
   .forge/commands
   .forge/skills
+  .forge/integrations
+  .forge/hooks
   .forge/forgekit.json
+  .forge/.mcp.json.example
 
 Options:
   --target  Install into a specific directory
@@ -42,8 +45,10 @@ const entries = [
   ['forgekit.json', path.join('.forge', 'forgekit.json')],
   ['AGENTS.md', path.join('.forge', 'AGENTS.md')],
   ['.forge.toml', path.join('.forge', '.forge.toml')],
+  ['.mcp.json.example', path.join('.forge', '.mcp.json.example')],
   ['integrations', path.join('.forge', 'integrations')],
   ['communication', path.join('.forge', 'communication')],
+  ['hooks', path.join('.forge', 'hooks')],
 ];
 
 function log(message) {
