@@ -9,6 +9,7 @@ Orchestrator reads this file to route tasks. Internal only. Do not expose as a u
 | auto | entrypoint, spec-first workflow | skills/auto/SKILL.md |
 | orchestrator | internal routing, skill selection | skills/orchestrator/SKILL.md |
 | token-efficiency | token policy, context budget, minimal reads | skills/token-efficiency/SKILL.md |
+| coding-level | giải thích đơn giản, non-tech, technical detail, how it works | skills/coding-level/SKILL.md |
 
 ## Development
 
@@ -46,5 +47,6 @@ Orchestrator reads this file to route tasks. Internal only. Do not expose as a u
 | context-engineering | codebase lớn, chưa biết, symbol, refactor cross-file, tìm function, unfamiliar repo | skills/context-engineering/SKILL.md |
 | ask | thiếu thông tin, chưa rõ, mơ hồ, không biết bắt đầu từ đâu | skills/ask/SKILL.md |
 | watzup | watzup, status, project status, đang làm gì, tiến độ | skills/watzup/SKILL.md |
+| repomix | repomix, codebase summary, tóm tắt codebase, map project | skills/repomix/SKILL.md |
 | project-organization | structure, folder, organize, refactor arch, layout | skills/project-organization/SKILL.md |
 | docs | tài liệu, README, docs, documentation, guide, changelog | skills/docs/SKILL.md |

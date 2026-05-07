@@ -65,3 +65,5 @@ Do not use RTK for file edits.
 - Do not load broad design/media/AI skills by default.
 - Do not read whole repositories or full reference directories.
 - Do not ask user to choose a skill.
+
+Detailed rules: `skills/orchestrator/references/workflow-rules.md` — đọc khi cần giải quyết edge case.
