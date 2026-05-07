@@ -1,0 +1,37 @@
+{
+  "schema": "https://forgekit.dev/schemas/forgecode-native.v1.json",
+  "provider": "forgecode",
+  "version": "2.0.0",
+  "nativeRuntimeDir": ".",
+  "globalRuntimeDir": "~/ForgeKit",
+  "entrypoints": [
+    ":ck:auto"
+  ],
+  "instructions": [
+    "AGENTS.md",
+    "commands/ck:auto.md",
+    "skills/auto/SKILL.md",
+    "skills/orchestrator/SKILL.md",
+    "skills/token-efficiency/SKILL.md",
+    "communication/caveman.md"
+  ],
+  "assetDirectories": {
+    "agents": "agents",
+    "commands": "commands",
+    "skills": "skills"
+  },
+  "integrations": {
+    "rtk": "integrations/rtk.md",
+    "serena": "integrations/serena.md",
+    "contextMode": false,
+    "cavemem": false
+  },
+  "behavior": {
+    "specFirst": true,
+    "singleApprovalGate": true,
+    "autonomousAfterApproval": true,
+    "verifyBeforeFinalReport": true,
+    "forgeCodeNativeFirst": true,
+    "maxPrimarySkillsInitial": 1
+  }
+}
