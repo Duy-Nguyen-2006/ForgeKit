@@ -1,0 +1,18 @@
+.credentials.json
+.forge.db*
+.forge_history
+cache/
+snapshots/
+.env
+.env.*
+
+# Generated compatibility/runtime exports
+.forge/
+.codex/
+.claude/
+
+# Dependencies / caches
+node_modules/
+__pycache__/
+*.pyc
+*.log
