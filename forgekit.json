@@ -30,12 +30,16 @@
   "hooks": {
     "privacy": {
       "enabled": true,
-      "config": "hooks/privacy/patterns.json",
+      "config": "hooks/privacy/privacy-block.cjs",
+      "patterns": "hooks/privacy/patterns.json",
+      "docs": "hooks/privacy/HOOK.md",
       "trigger": "before-output"
     },
     "notifications": {
       "enabled": false,
-      "config": "hooks/config.json",
+      "config": "hooks/notifications/notify.cjs",
+      "webhookConfig": "hooks/config.json",
+      "docs": "hooks/notifications/HOOK.md",
       "channels": [
         "telegram",
         "discord",
@@ -48,12 +52,14 @@
     },
     "sessionStart": {
       "enabled": true,
-      "config": "hooks/session-start/context-load.md",
+      "config": "hooks/session-start/session-init.cjs",
+      "docs": "hooks/session-start/HOOK.md",
       "trigger": "session-start"
     },
     "preToolBudgetGuard": {
       "enabled": true,
-      "config": "hooks/pre-tool/budget-guard.md",
+      "config": "hooks/pre-tool/budget-guard.cjs",
+      "docs": "hooks/pre-tool/HOOK.md",
       "trigger": "pre-tool-call"
     }
   },

@@ -2,6 +2,26 @@
 
 All notable changes to ForgeKit are documented in this file. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [2.3.0] - 2026-05-09
+
+### Added
+
+- `hooks/privacy/privacy-block.cjs` — executable privacy hook (stdin JSON → pattern match → exit 2 on block).
+- `hooks/pre-tool/budget-guard.cjs` — executable budget guard hook (token estimation, cap enforcement).
+- `hooks/session-start/session-init.cjs` — executable session init hook (one-line git status summary).
+- `hooks/notifications/notify.cjs` — executable notification hook (Telegram/Discord/Slack via env vars, disabled by default).
+- `forgekit.json` hooks now point to `.cjs` files; `.md` docs kept alongside as `docs` field.
+- `hooks/privacy/patterns.json` updated: JS-compatible regex patterns with `pattern_flags` field.
+- `skills/auto/scripts/hooks.test.cjs` — 13 hook tests with mock input and exit code assertions.
+- Installer (`bin/lgmmo-forgekit-installer.js`) now sets executable bit on `.cjs` hook files (Unix/macOS).
+- `scripts/validate-forgekit.cjs` enhanced: checks patterns, docs, webhookConfig paths in hooks.
+- `npm test` now includes hook tests.
+
+### Changed
+
+- `forgekit.json` hooks config: `.md` paths → `.cjs` paths, added `docs` and `patterns` fields.
+- `package.json` version bump to 2.3.0.
+
 ## [2.2.0] - 2026-05-09
 
 ### Added

@@ -108,7 +108,38 @@ try {
   }
 
   log('done');
+
+  // Set executable bit on .cjs hook files (Unix/macOS only)
+  if (process.platform !== 'win32') {
+    const hooksDest = path.join(targetRoot, '.forge', 'hooks');
+    try {
+      const hookFiles = findFiles(hooksDest, '.cjs');
+      for (const file of hookFiles) {
+        fs.chmodSync(file, 0o755);
+      }
+      if (hookFiles.length > 0) {
+        log(`set executable on ${hookFiles.length} hook file(s)`);
+      }
+    } catch {
+      // chmod failure is non-critical
+    }
+  }
+
   log('next: mở ForgeCode trong thư mục này và dùng :ck:auto');
 } catch (error) {
   fail(error instanceof Error ? error.message : String(error));
+}
+
+function findFiles(dir, ext) {
+  const results = [];
+  if (!fs.existsSync(dir)) return results;
+  for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+    const fullPath = path.join(dir, entry.name);
+    if (entry.isDirectory()) {
+      results.push(...findFiles(fullPath, ext));
+    } else if (entry.name.endsWith(ext)) {
+      results.push(fullPath);
+    }
+  }
+  return results;
 }

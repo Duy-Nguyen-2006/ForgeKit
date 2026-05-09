@@ -93,12 +93,12 @@ if (manifest.provider !== 'forgecode') {
 const gitignoredConfigs = ['hooks/config.json']; // These are runtime-only, created from example
 const hooks = manifest.hooks || {};
 for (const [hookName, hookConfig] of Object.entries(hooks)) {
+  // Check main config path (.cjs or .json)
   if (hookConfig.config && typeof hookConfig.config === 'string') {
     const configPath = path.join(root, hookConfig.config);
     if (fs.existsSync(configPath)) {
       pass(`hook "${hookName}" config path exists`);
     } else if (gitignoredConfigs.includes(hookConfig.config)) {
-      // Config is gitignored — check that example/template exists
       const examplePath = configPath.replace(/\.json$/, '.example.json');
       if (fs.existsSync(examplePath)) {
         pass(`hook "${hookName}" config is gitignored, example template exists`);
@@ -107,6 +107,41 @@ for (const [hookName, hookConfig] of Object.entries(hooks)) {
       }
     } else {
       fail(`hook "${hookName}" config path "${hookConfig.config}" does not exist`);
+    }
+  }
+
+  // Check patterns path (for privacy hook)
+  if (hookConfig.patterns && typeof hookConfig.patterns === 'string') {
+    const patternsPath = path.join(root, hookConfig.patterns);
+    if (fs.existsSync(patternsPath)) {
+      pass(`hook "${hookName}" patterns path exists`);
+    } else {
+      fail(`hook "${hookName}" patterns path "${hookConfig.patterns}" does not exist`);
+    }
+  }
+
+  // Check docs path
+  if (hookConfig.docs && typeof hookConfig.docs === 'string') {
+    const docsPath = path.join(root, hookConfig.docs);
+    if (fs.existsSync(docsPath)) {
+      pass(`hook "${hookName}" docs path exists`);
+    } else {
+      fail(`hook "${hookName}" docs path "${hookConfig.docs}" does not exist`);
+    }
+  }
+
+  // Check webhookConfig path (gitignored)
+  if (hookConfig.webhookConfig && typeof hookConfig.webhookConfig === 'string') {
+    const wcPath = path.join(root, hookConfig.webhookConfig);
+    if (fs.existsSync(wcPath)) {
+      pass(`hook "${hookName}" webhookConfig path exists`);
+    } else {
+      const examplePath = wcPath.replace(/\.json$/, '.example.json');
+      if (fs.existsSync(examplePath)) {
+        pass(`hook "${hookName}" webhookConfig is gitignored, example exists`);
+      } else {
+        fail(`hook "${hookName}" webhookConfig "${hookConfig.webhookConfig}" not found and no example`);
+      }
     }
   }
 }
