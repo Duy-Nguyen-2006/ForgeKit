@@ -1,6 +1,6 @@
 {
   "name": "lgmmo-forgekit-installer",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "One-command installer for LGM MMO ForgeKit into the current project.",
   "type": "module",
   "bin": {
@@ -11,9 +11,11 @@
     "agents/",
     "commands/",
     "skills/",
+    "scripts/",
     "forgekit.json",
     "AGENTS.md",
     ".forge.toml",
+    ".forgeignore",
     ".mcp.json.example",
     "integrations/",
     "communication/",

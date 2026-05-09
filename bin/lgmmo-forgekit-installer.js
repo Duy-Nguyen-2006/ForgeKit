@@ -49,6 +49,8 @@ const entries = [
   ['integrations', path.join('.forge', 'integrations')],
   ['communication', path.join('.forge', 'communication')],
   ['hooks', path.join('.forge', 'hooks')],
+  ['scripts', path.join('.forge', 'scripts')],
+  ['.forgeignore', path.join('.forge', '.forgeignore')],
 ];
 
 function log(message) {
