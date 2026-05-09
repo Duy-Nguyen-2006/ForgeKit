@@ -8,7 +8,10 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / ".claude"
-SKILLS = ["auto", "orchestrator", "token-efficiency", "fix", "ck-debug", "test", "code-review", "ui-ux-pro-max"]
+SKILLS = ["auto", "orchestrator", "token-efficiency", "fix", "ck-debug", "test", "code-review", "ui-ux-pro-max", "repo-map", "diff-context", "code-map", "context-engineering"]
+HOOKS_DIR = ROOT / "hooks"
+SCRIPTS_DIR = ROOT / "scripts"
+EXTRA_FILES = [".forgeignore", ".mcp.json.example"]
 
 CLAUDE_MD = """# ForgeKit for Claude
 
@@ -81,6 +84,18 @@ def main() -> None:
         src = ROOT / "skills" / skill
         if src.exists():
             shutil.copytree(src, OUT / "skills" / skill)
+
+    # v2.1.0: copy hooks and scripts directories
+    if HOOKS_DIR.exists():
+        shutil.copytree(HOOKS_DIR, OUT / "hooks")
+    if SCRIPTS_DIR.exists():
+        shutil.copytree(SCRIPTS_DIR, OUT / "scripts")
+
+    # v2.1.0: copy extra root files
+    for name in EXTRA_FILES:
+        src = ROOT / name
+        if src.exists():
+            shutil.copy2(src, OUT / name)
 
     (OUT / "CLAUDE.md").write_text(CLAUDE_MD)
     (OUT / "commands" / "ck" / "auto.md").write_text(COMMAND_MD)

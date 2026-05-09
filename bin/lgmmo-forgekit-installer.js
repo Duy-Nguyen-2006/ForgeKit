@@ -26,8 +26,10 @@ Installs ForgeKit files into the current directory:
   .forge/skills
   .forge/integrations
   .forge/hooks
+  .forge/scripts
   .forge/forgekit.json
   .forge/.mcp.json.example
+  .forge/.forgeignore
 
 Options:
   --target  Install into a specific directory

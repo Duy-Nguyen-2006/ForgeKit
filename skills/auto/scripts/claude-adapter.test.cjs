@@ -32,4 +32,14 @@ assert.ok(guide.includes('Spec first'), 'Claude guide should preserve Spec-first
 assert.ok(guide.includes('Do not use context-mode'), 'Claude guide should disable context-mode');
 assert.ok(guide.includes('Do not use cavemem'), 'Claude guide should disable cavemem');
 
+// v2.1.0 additions — verify new skills, hooks, scripts, files exported
+assert.ok(fs.existsSync(path.join(claudeDir, 'skills', 'repo-map', 'SKILL.md')), 'claude repo-map skill should exist');
+assert.ok(fs.existsSync(path.join(claudeDir, 'skills', 'diff-context', 'SKILL.md')), 'claude diff-context skill should exist');
+assert.ok(fs.existsSync(path.join(claudeDir, 'skills', 'code-map', 'SKILL.md')), 'claude code-map skill should exist');
+assert.ok(fs.existsSync(path.join(claudeDir, 'skills', 'context-engineering', 'SKILL.md')), 'claude context-engineering skill should exist');
+assert.ok(fs.existsSync(path.join(claudeDir, 'hooks', 'pre-tool', 'budget-guard.md')), 'claude budget-guard hook should exist');
+assert.ok(fs.existsSync(path.join(claudeDir, 'scripts', 'build-symbol-index.sh')), 'claude build-symbol-index.sh should exist');
+assert.ok(fs.existsSync(path.join(claudeDir, '.forgeignore')), 'claude .forgeignore should exist');
+assert.ok(fs.existsSync(path.join(claudeDir, '.mcp.json.example')), 'claude .mcp.json.example should exist');
+
 console.log('claude-adapter.test: ok');

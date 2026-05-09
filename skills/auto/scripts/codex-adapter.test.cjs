@@ -39,4 +39,14 @@ assert.strictEqual(config.behavior.verifyBeforeFinalReport, true);
 const skillContent = fs.readFileSync(autoSkill, 'utf8');
 assert.ok(skillContent.includes('name: ck:auto'), 'exported auto skill must keep ck:auto name');
 
+// v2.1.0 additions — verify new skills, hooks, scripts, files exported
+assert.ok(fs.existsSync(path.join(codexDir, 'skills', 'repo-map', 'SKILL.md')), 'codex repo-map skill should exist');
+assert.ok(fs.existsSync(path.join(codexDir, 'skills', 'diff-context', 'SKILL.md')), 'codex diff-context skill should exist');
+assert.ok(fs.existsSync(path.join(codexDir, 'skills', 'code-map', 'SKILL.md')), 'codex code-map skill should exist');
+assert.ok(fs.existsSync(path.join(codexDir, 'skills', 'context-engineering', 'SKILL.md')), 'codex context-engineering skill should exist');
+assert.ok(fs.existsSync(path.join(codexDir, 'hooks', 'pre-tool', 'budget-guard.md')), 'codex budget-guard hook should exist');
+assert.ok(fs.existsSync(path.join(codexDir, 'scripts', 'build-symbol-index.sh')), 'codex build-symbol-index.sh should exist');
+assert.ok(fs.existsSync(path.join(codexDir, '.forgeignore')), 'codex .forgeignore should exist');
+assert.ok(fs.existsSync(path.join(codexDir, '.mcp.json.example')), 'codex .mcp.json.example should exist');
+
 console.log('codex-adapter.test: ok');

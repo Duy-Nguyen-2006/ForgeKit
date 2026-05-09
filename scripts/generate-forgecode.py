@@ -8,8 +8,8 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / ".forge"
-DIRS = ["commands", "agents", "skills", "integrations", "communication"]
-FILES = ["forgekit.json", "AGENTS.md", ".forge.toml", "README.md"]
+DIRS = ["commands", "agents", "skills", "integrations", "communication", "hooks", "scripts"]
+FILES = ["forgekit.json", "AGENTS.md", ".forge.toml", "README.md", ".forgeignore", ".mcp.json.example"]
 IGNORE_PATTERNS = [
     "*.test.*",
     "__pycache__",
