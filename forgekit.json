@@ -50,6 +50,11 @@
       "enabled": true,
       "config": "hooks/session-start/context-load.md",
       "trigger": "session-start"
+    },
+    "preToolBudgetGuard": {
+      "enabled": true,
+      "config": "hooks/pre-tool/budget-guard.md",
+      "trigger": "pre-tool-call"
     }
   },
   "behavior": {

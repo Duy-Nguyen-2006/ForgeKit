@@ -5,6 +5,9 @@ argument-hint: "[search-target] [ext]"
 metadata:
   author: claudekit
   version: "1.0.0"
+triggers: ["codebase mới", "explore", "inspect", "map project", "find files", "search across"]
+non_triggers: ["fix", "implement", "deploy", "single file edit"]
+examples: ["find authentication-related files", "map project structure", "search for all API endpoints"]
 ---
 
 # Scout
@@ -29,6 +32,26 @@ Fast, token-efficient codebase scouting using parallel agents to find files need
 2. Use a wide range of Grep and Glob patterns to find relevant files and estimate scale of the codebase
 3. Spawn parallel agents with divided directories
 4. Collect results into concise report
+
+## AST-based Scouting
+
+For structural code search (finding function definitions, class patterns, component structures), use `ast-grep` instead of regex. It's formatting-immune, language-aware, and produces fewer false positives.
+
+**Quick examples:**
+```bash
+sg -p 'function $NAME($$$) { $$$ }' -l ts        # Find all functions
+sg -p 'class $NAME { $$$ }' -l ts                # Find all classes
+sg -p 'const $NAME = ($$$) => { $$$ }' -l tsx     # Find React components
+sg -p 'use$NAME($$$)' -l tsx                       # Find hook usage
+```
+
+**Decision tree:**
+- Literal text search (error messages, strings, config) → `ripgrep`
+- Structural code search (definitions, patterns, idioms) → `ast-grep`
+- Symbol references across codebase → Serena MCP (if available), else hybrid
+- Need both text AND structure → hybrid ripgrep + ast-grep
+
+👉 Full guide: `references/ast-grep-scouting.md`
 
 ## Configuration
 
@@ -92,3 +115,4 @@ Load appropriate reference based on decision tree:
 - `references/internal-scouting.md` - Using Explore subagents
 - `references/external-scouting.md` - Using Gemini/OpenCode CLI
 - `references/task-management-scouting.md` - Claude Task patterns for scout coordination
+- `references/ast-grep-scouting.md` - AST-based code search with ast-grep (structural patterns, hybrid ripgrep, decision tree)

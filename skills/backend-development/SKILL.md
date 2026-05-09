@@ -6,6 +6,9 @@ argument-hint: "[framework] [task]"
 metadata:
   author: claudekit
   version: "1.0.0"
+triggers: ["api", "server", "endpoint", "auth", "service", "backend"]
+non_triggers: ["ui", "design", "component", "css", "frontend"]
+examples: ["create REST API endpoint", "thêm authentication middleware", "implement service layer"]
 ---
 
 # Backend Development Skill

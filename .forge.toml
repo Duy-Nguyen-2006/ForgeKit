@@ -14,7 +14,7 @@ max_image_size_bytes = 262144
 tool_timeout_secs = 300
 auto_open_dump = false
 max_conversations = 100
-max_sem_search_results = 100
+max_sem_search_results = 50   # reduced: sufficient and cheaper
 sem_search_top_k = 10
 services_url = "https://api.forgecode.dev/"
 max_extensions = 15
@@ -77,10 +77,10 @@ frequency = "daily"
 auto_update = true
 
 [compact]
-retention_window = 6
+retention_window = 4   # tighter for repo large — keeps fresher context
 eviction_window = 0.2
 max_tokens = 2000
-token_threshold = 100000
+token_threshold = 60000   # lowered for cx/gpt-5.5 — saves cost on large repos
 message_threshold = 200
 on_turn_end = false
 

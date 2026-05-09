@@ -5,6 +5,9 @@ argument-hint: "[scope] [--secrets-only] [--deps-only] [--full]"
 metadata:
   author: claudekit
   version: "1.0.0"
+triggers: ["security", "vulnerability", "injection", "secret", "OWASP", "audit", "XSS", "CSRF"]
+non_triggers: ["fix bug", "create feature", "deploy", "design"]
+examples: ["scan for security vulnerabilities", "kiểm tra OWASP top 10", "audit secrets in codebase"]
 ---
 
 # Security Scan

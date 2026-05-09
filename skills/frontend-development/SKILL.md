@@ -5,6 +5,9 @@ argument-hint: "[component or feature]"
 metadata:
   author: claudekit
   version: "1.0.0"
+triggers: ["component", "react", "vue", "page", "hook", "client UI", "frontend"]
+non_triggers: ["api", "server", "database", "deploy", "design only"]
+examples: ["create a login component", "thêm page dashboard", "implement custom hook"]
 ---
 
 # Frontend Development Guidelines

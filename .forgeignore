@@ -1,0 +1,72 @@
+# ForgeKit ignore patterns
+# Used by repo-map, code-map, repomix, scout, and context-engineering skills
+
+# Dependencies
+node_modules/
+vendor/
+.venv/
+__pycache__/
+.pip/
+
+# Build output
+dist/
+build/
+.next/
+out/
+.target/
+bin/
+obj/
+
+# Test artifacts
+coverage/
+.nyc_output/
+*.test.js
+*.test.ts
+*.spec.js
+*.spec.ts
+*.test.py
+__tests__/
+
+# Generated files
+*.generated.ts
+*.generated.js
+*.min.js
+*.min.css
+*.bundle.js
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Cache
+.forge/cache/
+.cache/
+.parcel-cache/
+
+# Lock files (usually not needed for context)
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+bun.lockb
+poetry.lock
+Gemfile.lock
+
+# Media (large files not needed for code context)
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.svg
+*.ico
+*.mp4
+*.mp3
+*.wav
+*.pdf
+*.zip
+*.tar.gz

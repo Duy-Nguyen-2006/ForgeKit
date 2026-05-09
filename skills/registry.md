@@ -45,8 +45,11 @@ Orchestrator reads this file to route tasks. Internal only. Do not expose as a u
 |---|---|---|
 | scout | codebase mới, chưa biết, explore, inspect, map project | skills/scout/SKILL.md |
 | context-engineering | codebase lớn, chưa biết, symbol, refactor cross-file, tìm function, unfamiliar repo | skills/context-engineering/SKILL.md |
+| diff-context | diff, changed files, git diff, fix context, refactor context, reverse deps, patch context, minimal context | skills/diff-context/SKILL.md |
 | ask | thiếu thông tin, chưa rõ, mơ hồ, không biết bắt đầu từ đâu | skills/ask/SKILL.md |
 | watzup | watzup, status, project status, đang làm gì, tiến độ | skills/watzup/SKILL.md |
 | repomix | repomix, codebase summary, tóm tắt codebase, map project | skills/repomix/SKILL.md |
+| repo-map | repo map, skeleton map, ranked signatures, repomap, orient codebase, tree-sitter map, PageRank code | skills/repo-map/SKILL.md |
+| code-map | code map, code2prompt, gitingest, map codebase, fallback summary, Serena unavailable | skills/code-map/SKILL.md |
 | project-organization | structure, folder, organize, refactor arch, layout | skills/project-organization/SKILL.md |
 | docs | tài liệu, README, docs, documentation, guide, changelog | skills/docs/SKILL.md |

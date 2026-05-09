@@ -5,6 +5,9 @@ argument-hint: "[issue] --auto|--review|--quick|--parallel"
 metadata:
   author: claudekit
   version: "2.0.0"
+triggers: ["fix", "sửa", "patch", "broken", "type error", "lint error", "failing test", "type/lint issue"]
+non_triggers: ["debug", "investigate", "explore", "refactor architecture"]
+examples: ["fix the type error in auth.ts", "sửa lỗi lint trong component", "patch failing test for login"]
 ---
 
 # Fixing

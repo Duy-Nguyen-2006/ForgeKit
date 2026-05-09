@@ -6,6 +6,9 @@ argument-hint: "[platform] [environment]"
 metadata:
   author: claudekit
   version: "1.0.0"
+triggers: ["deploy", "publish", "ship", "hosting", "CI/CD", "docker", "production"]
+non_triggers: ["fix", "debug", "create feature", "refactor"]
+examples: ["deploy to Vercel", "publish lên production", "setup CI/CD pipeline"]
 ---
 
 # Deploy Skill

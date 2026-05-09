@@ -6,6 +6,9 @@ argument-hint: "[error or issue description]"
 metadata:
   author: claudekit
   version: "4.0.0"
+triggers: ["debug", "investigate", "root cause", "diagnose", "unclear why", "crash", "không chạy"]
+non_triggers: ["fix", "implement", "create feature", "deploy"]
+examples: ["debug why the API returns 500", "tìm nguyên nhân crash", "investigate slow query"]
 ---
 
 # Debugging & System Investigation

@@ -4,6 +4,9 @@ description: >
   Load khi task yêu cầu hiểu codebase chưa quen, repo lớn,
   cross-file refactor, hoặc tìm symbol/usage. Không load cho
   task 1-file rõ ràng.
+triggers: ["codebase lớn", "symbol", "refactor cross-file", "tìm function", "unfamiliar repo", "cross-file"]
+non_triggers: ["single file", "simple edit", "deploy", "create new project"]
+examples: ["find where User model is defined", "tìm tất cả chỗ gọi function X", "cross-file rename refactor"]
 ---
 
 # Context Engineering
@@ -20,10 +23,11 @@ description: >
 
 ### Nếu Serena MCP có:
 
-1. `mcp_serena__symbol_lookup` tên cần tìm
-2. `mcp_serena__find_references` nếu cần cross-file
-3. `mcp_serena__workspace_symbols` nếu cần map toàn bộ
-4. Đọc chính xác file được trỏ đến — không đọc gì thêm
+1. `mcp_serena__find_symbol` tên cần tìm (lookup symbol definition)
+2. `mcp_serena__find_referencing_symbols` nếu cần cross-file references
+3. `mcp_serena__get_symbols_overview` nếu cần map toàn bộ overview
+4. `mcp_serena__search_for_pattern` nếu cần regex/semantic search
+5. Đọc chính xác file được trỏ đến — không đọc gì thêm
 
 ### Nếu không có Serena:
 
