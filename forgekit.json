@@ -1,7 +1,7 @@
 {
   "schema": "https://forgekit.dev/schemas/forgecode-native.v1.json",
   "provider": "forgecode",
-  "version": "2.0.0",
+  "version": "2.4.0",
   "nativeRuntimeDir": ".",
   "globalRuntimeDir": "~/ForgeKit",
   "entrypoints": [
@@ -14,6 +14,7 @@
     "skills/auto/SKILL.md",
     "skills/orchestrator/SKILL.md",
     "skills/token-efficiency/SKILL.md",
+    "skills/coding-level/SKILL.md",
     "communication/caveman.md"
   ],
   "assetDirectories": {

@@ -49,4 +49,50 @@ assert.ok(tokenEfficiency.includes('Start with max 1 primary skill'), 'token pol
 assert.ok(tokenEfficiency.includes('context-mode: disabled'), 'token policy must disable context-mode');
 assert.ok(tokenEfficiency.includes('cavemem: disabled'), 'token policy must disable cavemem');
 
+// --- Phase 3: Routing assertions for 6 new domain skills ---
+const registry = fs.readFileSync(path.join(root, 'skills', 'registry.md'), 'utf8');
+const intentClassifier = fs.readFileSync(path.join(root, 'skills', 'orchestrator', 'references', 'intent-classifier.md'), 'utf8');
+
+const domainSkills = [
+  { name: 'auth', trigger: 'jwt', intent: 'đăng nhập' },
+  { name: 'payment-integration', trigger: 'stripe', intent: 'thanh toán' },
+  { name: 'web-testing', trigger: 'playwright', intent: 'e2e test' },
+  { name: 'ai-multimodal', trigger: 'openai', intent: 'chatbot' },
+  { name: 'document-processing', trigger: 'pdf', intent: 'parse document' },
+  { name: 'browser-automation', trigger: 'scrape', intent: 'crawl' },
+];
+
+for (const skill of domainSkills) {
+  // 1. SKILL.md exists
+  const skillPath = path.join(root, 'skills', skill.name, 'SKILL.md');
+  assert.ok(fs.existsSync(skillPath), `skills/${skill.name}/SKILL.md must exist`);
+
+  // 2. Registry entry exists with correct name
+  const registryPattern = new RegExp(`\\|\\s*${skill.name}\\s*\\|`);
+  assert.ok(registryPattern.test(registry), `registry.md must list "${skill.name}" skill`);
+
+  // 3. Registry trigger keyword present
+  assert.ok(registry.includes(skill.trigger), `registry.md must contain trigger "${skill.trigger}" for ${skill.name}`);
+
+  // 4. Intent classifier includes skill routing
+  assert.ok(intentClassifier.includes(`\`${skill.name}\``), `intent-classifier.md must reference \`${skill.name}\``);
+
+  // 5. SKILL.md has frontmatter with triggers
+  const skillContent = fs.readFileSync(skillPath, 'utf8');
+  const fmMatch = skillContent.match(/^---\n([\s\S]*?)\n---/);
+  assert.ok(fmMatch, `skills/${skill.name}/SKILL.md must have YAML frontmatter`);
+  const frontmatter = fmMatch[1];
+  assert.ok(/triggers?:/.test(frontmatter), `skills/${skill.name}/SKILL.md frontmatter must have "triggers"`);
+  assert.ok(frontmatter.includes(skill.trigger), `skills/${skill.name}/SKILL.md triggers must include "${skill.trigger}"`);
+}
+
+// Verify intent classifier has domain skill patterns (Patterns 8-12)
+const requiredPatterns = [
+  'Pattern 8: Auth', 'Pattern 9: Payment', 'Pattern 10: Web-Testing',
+  'Pattern 11: Browser-Automation', 'Pattern 12: AI-Multimodal',
+];
+for (const pat of requiredPatterns) {
+  assert.ok(intentClassifier.includes(pat), `intent-classifier.md must include "${pat}" pattern`);
+}
+
 console.log('auto-contract.test: ok');

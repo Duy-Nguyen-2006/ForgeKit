@@ -5,7 +5,7 @@
  * validate-skills.cjs — Validate all SKILL.md files
  *
  * Ensures:
- * 1. Every SKILL.md exists and is ≤200 lines.
+ * 1. Every SKILL.md exists and is ≤200 lines (allowlisted exceptions for legacy skills).
  * 2. References/scripts referenced in SKILL.md exist (if path-like strings are found).
  * 3. No skill references a path that belongs to another skill incorrectly.
  *
@@ -35,7 +35,15 @@ function pass(msg) {
   console.log(`✓ ${msg}`);
 }
 
-const MAX_SKILL_LINES = 250; // Phase 2.10 target: 200; current max is ~407
+const MAX_SKILL_LINES = 200; // Per plan: all SKILL.md ≤200 lines
+
+// Allowlist for existing skills that exceed the target — must be refactored in future
+const LINE_COUNT_ALLOWLIST = new Set([
+  'project-organization', // 231 lines — needs split
+  'mcp-management',       // 216 lines — needs split
+  'fix',                  // 215 lines — needs split
+  'code-review',          // 202 lines — borderline, needs trim
+]);
 
 // Get all skill directories
 const dirs = fs.readdirSync(skillsDir, { withFileTypes: true })
@@ -54,7 +62,11 @@ for (const dir of dirs) {
 
   // 1. Line count check
   if (lines > MAX_SKILL_LINES) {
-    fail(`skills/${dir}/SKILL.md — ${lines} lines (max ${MAX_SKILL_LINES})`);
+    if (LINE_COUNT_ALLOWLIST.has(dir)) {
+      warn(`skills/${dir}/SKILL.md — ${lines} lines (exceeds ${MAX_SKILL_LINES}, allowlisted for refactor)`);
+    } else {
+      fail(`skills/${dir}/SKILL.md — ${lines} lines (max ${MAX_SKILL_LINES})`);
+    }
   } else {
     pass(`skills/${dir}/SKILL.md — ${lines} lines (≤${MAX_SKILL_LINES})`);
   }
@@ -68,10 +80,13 @@ for (const dir of dirs) {
   }
 
   // 3. Check that scripts/ dir exists if SKILL.md mentions it
-  if (content.includes('scripts/')) {
+  // Only warn for references to the skill's own scripts/ subfolder.
+  // Skip references about user-project conventions (e.g. "`scripts/`" in tables, "project's scripts/")
+  const ownScriptsPattern = new RegExp(`(\\.\\/scripts\\/|skills\\/${dir}\\/scripts\\/|\\./scripts/)`, 'g');
+  if (ownScriptsPattern.test(content)) {
     const scriptsDir = path.join(skillsDir, dir, 'scripts');
     if (!fs.existsSync(scriptsDir)) {
-      warn(`skills/${dir}/SKILL.md mentions "scripts/" but directory does not exist`);
+      warn(`skills/${dir}/SKILL.md references own "scripts/" directory but it does not exist`);
     }
   }
 

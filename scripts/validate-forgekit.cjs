@@ -10,6 +10,7 @@
  * 3. Required top-level fields exist: schema, provider, version, behavior.
  * 4. behavior flags match contract: specFirst, singleApprovalGate, etc.
  * 5. hooks config paths are valid (file exists or .md/.cjs companion exists).
+ * 6. README does not expose forbidden entrypoints (/ck: or :ck:non-auto).
  *
  * Exit 0 on success, 1 on failure.
  */
@@ -61,6 +62,21 @@ for (const field of requiredFields) {
     fail(`missing required field: ${field}`);
   } else {
     pass(`field "${field}" present`);
+  }
+}
+
+// 3b. Version sync: forgekit.json version must match package.json
+const pkgPath = path.join(root, 'package.json');
+if (fs.existsSync(pkgPath)) {
+  try {
+    const pkg = JSON.parse(fs.readFileSync(pkgPath, 'utf8'));
+    if (manifest.version !== pkg.version) {
+      fail(`version mismatch: forgekit.json="${manifest.version}" vs package.json="${pkg.version}" — must be identical`);
+    } else {
+      pass(`version sync: forgekit.json == package.json == "${manifest.version}"`);
+    }
+  } catch {
+    // package.json parse failure is non-critical for this check
   }
 }
 
@@ -144,6 +160,26 @@ for (const [hookName, hookConfig] of Object.entries(hooks)) {
       }
     }
   }
+}
+
+// 7. README guard — no non-:ck:auto entrypoints exposed to users
+// Per §0.4: CI must fail if README contains /^\/ck: or /^:ck:(?!auto\b)
+const readmePath = path.join(root, 'README.md');
+if (fs.existsSync(readmePath)) {
+  const readme = fs.readFileSync(readmePath, 'utf8');
+  const forbiddenSlashCk = /^\s*\/ck:/m;
+  const forbiddenCkNonAuto = /^\s*:ck:(?!auto\b)/m;
+  if (forbiddenSlashCk.test(readme)) {
+    fail('README contains "/ck:" entrypoint — only ":ck:auto" is allowed (§0.4)');
+  }
+  if (forbiddenCkNonAuto.test(readme)) {
+    fail('README contains ":ck:" entrypoint other than ":ck:auto" — violates single-entrypoint principle (§0.4)');
+  }
+  if (!forbiddenSlashCk.test(readme) && !forbiddenCkNonAuto.test(readme)) {
+    pass('README entrypoint guard — no forbidden /ck: or :ck:(non-auto) patterns');
+  }
+} else {
+  console.warn('⚠ validate-forgekit: README.md not found — skipping entrypoint guard');
 }
 
 // Summary

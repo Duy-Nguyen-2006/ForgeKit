@@ -14,6 +14,17 @@ All notable changes to ForgeKit are documented in this file. Format follows [Kee
 
 - README further trimmed: only quickstart + links to docs/ and CHANGELOG.
 
+### Fixed
+
+- `forgekit.json` version synced to `2.4.0` (was `2.0.0` — drift from package.json).
+- `forgekit.json` instructions now includes `skills/coding-level/SKILL.md` (was missing from Core list).
+- `auto-contract.test.cjs` expanded: routing assertions for 6 new domain skills (SKILL.md existence, registry entry, trigger keywords, intent-classifier patterns).
+- `validate-forgekit.cjs` added README entrypoint guard (CI fails if `/ck:` or `:ck:` non-auto appears).
+- `validate-forgekit.cjs` added version sync check (forgekit.json version must match package.json).
+- `validate-skills.cjs` `MAX_SKILL_LINES` lowered from 250 to 200 with allowlist for 4 legacy skills.
+- `validate-skills.cjs` scripts/ warning heuristic fixed: only warns for skill's own `./scripts/` or `skills/<name>/scripts/` paths, not user-project convention references.
+- `.github/workflows/ci.yml` renamed misleading "Dry-run generators" step to "Run generators (full export)".
+
 ## [2.4.0] - 2026-05-09
 
 ### Added
