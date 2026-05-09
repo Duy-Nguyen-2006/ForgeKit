@@ -1,7 +1,7 @@
 {
   "schema": "https://forgekit.dev/schemas/forgecode-native.v1.json",
   "provider": "forgecode",
-  "version": "2.4.0",
+  "version": "2.4.1",
   "nativeRuntimeDir": ".",
   "globalRuntimeDir": "~/ForgeKit",
   "entrypoints": [
