@@ -29,6 +29,12 @@ Khi user nói câu chứa nhiều signal trùng lặp, phân tích theo động 
 | so sánh diff, thay đổi gì | `diff-context` |
 | map repo structure | `repo-map` |
 | map code symbols/flow | `code-map` |
+| đăng nhập, đăng ký, auth, jwt, oauth | `auth` |
+| thanh toán, payment, stripe, checkout | `payment-integration` |
+| playwright, cypress, e2e test UI | `web-testing` |
+| openai, chatbot, AI, vision, embedding | `ai-multimodal` |
+| pdf, docx, xlsx, parse, extract document | `document-processing` |
+| scrape, crawl, headless, browser automation | `browser-automation` |
 
 **Ví dụ tie-break:**
 - "Fix lỗi database" → động từ = fix → primary `fix`, secondary `databases` (không phải primary `databases`)
@@ -141,6 +147,29 @@ Khi user nói câu chứa nhiều signal trùng lặp, phân tích theo động 
 | 51 | "Setup Next.js app router" | `web-frameworks` | `frontend-development` | 0.94 |
 | 52 | "Config Vite cho React project" | `web-frameworks` | `frontend-development` | 0.92 |
 | 53 | "Migrate sang Turborepo" | `web-frameworks` | `project-organization` | 0.89 |
+
+### 🔑 Auth / Payment / Domain Skills
+
+| # | User Intent | Primary | Secondary | Confidence |
+|---|---|---|---|---|
+| 61 | "Thêm đăng nhập bằng JWT" | `auth` | `backend-development` | 0.94 |
+| 62 | "Implement OAuth2 Google login" | `auth` | `frontend-development` | 0.92 |
+| 63 | "Setup session management" | `auth` | `backend-development` | 0.91 |
+| 64 | "Add Stripe checkout flow" | `payment-integration` | `backend-development` | 0.94 |
+| 65 | "Tích hợp thanh toán MoMo" | `payment-integration` | `backend-development` | 0.93 |
+| 66 | "Setup recurring billing Stripe" | `payment-integration` | `databases` | 0.91 |
+| 67 | "Write Playwright tests for login" | `web-testing` | `auth` | 0.93 |
+| 68 | "Thêm e2e test cho checkout" | `web-testing` | `payment-integration` | 0.91 |
+| 69 | "Setup Cypress cho project" | `web-testing` | — | 0.95 |
+| 70 | "Integrate OpenAI chat API" | `ai-multimodal` | `backend-development` | 0.93 |
+| 71 | "Thêm image generation với DALL-E" | `ai-multimodal` | `frontend-development` | 0.90 |
+| 72 | "Setup voice transcription" | `ai-multimodal` | `backend-development` | 0.89 |
+| 73 | "Parse PDF và extract text" | `document-processing` | — | 0.95 |
+| 74 | "Generate Excel report từ data" | `document-processing` | `databases` | 0.92 |
+| 75 | "Đọc DOCX template và fill data" | `document-processing` | — | 0.93 |
+| 76 | "Scrape product data từ website" | `browser-automation` | — | 0.94 |
+| 77 | "Automate browser để take screenshots" | `browser-automation` | — | 0.93 |
+| 78 | "Crawl website và extract links" | `browser-automation` | `databases` | 0.91 |
 
 ### 🔀 Cross-Domain / Ambiguous
 
@@ -259,6 +288,46 @@ Khi user nói 1 câu chứa nhiều intent:
 | "Refactor và commit" | `code-review` | `git` | Refactor/review trước → commit sau |
 | "Debug và fix" | `ck-debug` | `fix` | Debug trước → fix sau khi biết cause |
 
+### Pattern 8: Auth vs Backend-Development
+
+| Signal | Route to |
+|---|---|
+| "login", "signup", "JWT", "OAuth", "đăng nhập", "đăng ký" | `auth` (chuyên sâu auth) |
+| "API endpoint", "middleware", "service" + nhắc auth | `backend-development` primary, `auth` secondary |
+| "thêm authentication vào API" | `auth` primary, `backend-development` secondary |
+
+### Pattern 9: Payment vs Backend-Development
+
+| Signal | Route to |
+|---|---|
+| "stripe", "paypal", "momo", "vnpay", "thanh toán", "checkout" | `payment-integration` |
+| "API" + "payment" | `payment-integration` primary, `backend-development` secondary |
+| "tạo order API" (không nhắc payment) | `backend-development` |
+
+### Pattern 10: Web-Testing vs Test
+
+| Signal | Route to |
+|---|---|
+| "playwright", "cypress", "e2e", "browser test", "visual regression" | `web-testing` |
+| "unit test", "vitest", "jest", "coverage" | `test` |
+| "test" đơn giản (không specify) | `test` (default) |
+
+### Pattern 11: Browser-Automation vs Web-Testing
+
+| Signal | Route to |
+|---|---|
+| "scrape", "crawl", "data extraction", "headless" | `browser-automation` |
+| "e2e test", "playwright test", "test flow" | `web-testing` |
+| "automate browser" (không rõ test hay scrape) | hỏi 1 câu disambiguation |
+
+### Pattern 12: AI-Multimodal vs Backend-Development
+
+| Signal | Route to |
+|---|---|
+| "openai", "chatgpt", "dall-e", "whisper", "embedding" | `ai-multimodal` |
+| "API" + "AI" | `ai-multimodal` primary, `backend-development` secondary |
+| "backend API" (không nhắc AI) | `backend-development` |
+
 ---
 
 ## NEW Skills: repo-map, diff-context, code-map
@@ -304,6 +373,12 @@ User Việt Nam thường dùng pattern này — nhận diện để route chín
 | "Xem diff" / "Thay đổi gì" | See changes | `diff-context` |
 | "Map project" | Map project | `repo-map` |
 | "Xem luồng code" | See code flow | `code-map` |
+| "Đăng nhập" / "Đăng ký" | Login / Signup | `auth` |
+| "Thanh toán" / "Trả tiền" | Payment | `payment-integration` |
+| "Test trên browser" | Browser test | `web-testing` |
+| "Tích hợp AI" / "Chatbot" | AI integration | `ai-multimodal` |
+| "Xử lý PDF" / "Xuất Excel" | Document processing | `document-processing` |
+| "Cào dữ liệu" / "Scrape web" | Web scraping | `browser-automation` |
 
 ---
 
@@ -335,3 +410,9 @@ User Việt Nam thường dùng pattern này — nhận diện để route chín
 | map repo, folder structure | `repo-map` |
 | diff, thay đổi, so sánh | `diff-context` |
 | code flow, call chain, symbol graph | `code-map` |
+| login, signup, jwt, oauth, đăng nhập, đăng ký | `auth` |
+| stripe, paypal, momo, vnpay, thanh toán, payment | `payment-integration` |
+| playwright, cypress, e2e test, browser test | `web-testing` |
+| openai, anthropic, gemini, chatbot, AI integration | `ai-multimodal` |
+| pdf, docx, xlsx, pptx, parse document | `document-processing` |
+| scrape, crawl, headless, automate browser | `browser-automation` |

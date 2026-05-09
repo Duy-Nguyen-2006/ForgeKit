@@ -2,6 +2,26 @@
 
 All notable changes to ForgeKit are documented in this file. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [2.4.0] - 2026-05-09
+
+### Added
+
+- `skills/auth/SKILL.md` — authentication & authorization patterns (JWT, OAuth, session, RBAC, OWASP-light checklist).
+- `skills/payment-integration/SKILL.md` — payment integration patterns (Stripe, PayPal, MoMo, VNPay, subscriptions).
+- `skills/web-testing/SKILL.md` — E2E & browser testing patterns (Playwright, Cypress, visual regression).
+- `skills/ai-multimodal/SKILL.md` — AI/multimodal integration patterns (OpenAI, Anthropic, Gemini, vision, embedding, RAG).
+- `skills/document-processing/SKILL.md` — document processing patterns (PDF, DOCX, XLSX, PPTX parse/generate).
+- `skills/browser-automation/SKILL.md` — browser automation & web scraping patterns (Playwright, Puppeteer).
+- `skills/auth/references/auth-checklist.md` — detailed auth implementation guide (loaded on demand).
+- `skills/registry.md` — added "Domain" section with 6 new skills.
+- `skills/orchestrator/references/intent-classifier.md` — added 18 few-shot examples + 5 ambiguity resolution patterns for domain skills.
+- `examples/ck-auto-templates.md` — added 6 new request templates for domain skills (auth, payment, web-testing, AI, document, browser).
+
+### Changed
+
+- All new skills are loaded on-demand only, never by default.
+- No user-facing entrypoint changes — all routing is internal via orchestrator.
+
 ## [2.3.0] - 2026-05-09
 
 ### Added

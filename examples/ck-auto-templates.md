@@ -37,3 +37,75 @@ Example:
 ```text
 :ck:auto review this project and tell me the top problems, what is safe to fix now, and what should wait. Keep the report short and practical.
 ```
+
+## Add login/signup
+
+```text
+:ck:auto thêm đăng nhập cho [app type]. Users cần [login method: email/password, Google, GitHub]. Sau khi đăng nhập, chuyển tới [page].
+```
+
+Example:
+
+```text
+:ck:auto thêm đăng nhập bằng email/password và Google cho web app. Sau khi đăng nhập chuyển tới dashboard.
+```
+
+## Add payment/checkout
+
+```text
+:ck:auto thêm thanh toán [provider: Stripe/MoMo/VNPay] cho [product/service]. Users cần [subscription/one-time payment]. Amount: [price].
+```
+
+Example:
+
+```text
+:ck:auto add Stripe checkout for monthly subscription. Price: $9.99/month. Users get access to premium features after payment.
+```
+
+## Write browser/E2E tests
+
+```text
+:ck:auto viết [Playwright/Cypress] tests cho [feature/page flow]. Test cases: [list 2-3 scenarios]. Run tests in headless mode.
+```
+
+Example:
+
+```text
+:ck:auto write Playwright tests for login and checkout flow. Test: valid login, invalid password, successful checkout.
+```
+
+## Integrate AI/Chat
+
+```text
+:ck:auto tích hợp [OpenAI/Anthropic/Gemini] cho [use case: chatbot, content generation, image generation]. Use API key from env variable.
+```
+
+Example:
+
+```text
+:ck:auto tích hợp OpenAI chat API cho customer support chatbot. Use GPT-4o model. API key from OPENAI_API_KEY env.
+```
+
+## Process documents
+
+```text
+:ck:auto xử lý [PDF/DOCX/XLSX] files — [parse/extract/generate] [what: text, tables, report]. Input: [source]. Output: [format].
+```
+
+Example:
+
+```text
+:ck:auto parse PDF invoices và extract amount, date, vendor. Output as JSON array.
+```
+
+## Scrape/automate browser
+
+```text
+:ck:auto scrape [website/page] để lấy [data type: prices, titles, links]. Lưu kết quả [format: JSON, CSV, database].
+```
+
+Example:
+
+```text
+:ck:auto scrape product names và prices từ example.com/shop. Save as CSV file.
+```

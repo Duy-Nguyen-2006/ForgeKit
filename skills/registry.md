@@ -53,3 +53,14 @@ Orchestrator reads this file to route tasks. Internal only. Do not expose as a u
 | code-map | code map, code2prompt, gitingest, map codebase, fallback summary, Serena unavailable, tóm tắt codebase, sơ đồ code | skills/code-map/SKILL.md |
 | project-organization | structure, folder, organize, refactor arch, layout | skills/project-organization/SKILL.md |
 | docs | tài liệu, README, docs, documentation, guide, changelog, viết tài liệu | skills/docs/SKILL.md |
+
+## Domain (specialist, loaded on-demand only)
+
+| Skill | Trigger keywords | Load path |
+|---|---|---|
+| auth | login, signup, jwt, session, oauth, đăng nhập, đăng ký, authentication, authorization, rbac | skills/auth/SKILL.md |
+| payment-integration | stripe, paypal, momo, vnpay, checkout, subscription, thanh toán, payment, billing | skills/payment-integration/SKILL.md |
+| web-testing | playwright, cypress, e2e, browser test, smoke test UI, visual regression | skills/web-testing/SKILL.md |
+| ai-multimodal | openai, anthropic, gemini, image generation, vision, transcribe, embedding, chatbot, AI integration | skills/ai-multimodal/SKILL.md |
+| document-processing | pdf, docx, xlsx, pptx, parse document, extract text, generate report | skills/document-processing/SKILL.md |
+| browser-automation | scrape, crawl, headless, automate browser, screenshot, puppeteer, data extraction | skills/browser-automation/SKILL.md |
