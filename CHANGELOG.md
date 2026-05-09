@@ -2,6 +2,18 @@
 
 All notable changes to ForgeKit are documented in this file. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [2.4.x] - 2026-05-09
+
+### Added
+
+- `docs/architecture.md` — one-page architecture diagram of the `:ck:auto` flow.
+- `docs/compatibility-matrix.md` — ForgeCode/Codex/Claude support level table.
+- `examples/ck-auto-templates.md` expanded with 6 domain skill templates.
+
+### Changed
+
+- README further trimmed: only quickstart + links to docs/ and CHANGELOG.
+
 ## [2.4.0] - 2026-05-09
 
 ### Added
