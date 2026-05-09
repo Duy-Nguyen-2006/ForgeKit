@@ -5,6 +5,21 @@ description: >
   changed files + reverse deps thay vì scan toàn bộ codebase.
   Pattern từ Continue.dev @diff provider và OpenHands git_changes.
 argument-hint: "[--base=REF] [--scope=files|deps|all]"
+triggers:
+  - diff
+  - changed files
+  - git diff
+  - what changed
+  - thay đổi gì
+  - so sánh branch
+non_triggers:
+  - full codebase scan
+  - greenfield
+  - new project
+examples:
+  - "xem diff giữa branch main và feature"
+  - "thay đổi gì từ lần commit trước"
+  - "so sánh code giữa 2 branch"
 metadata:
   author: forgekit
   version: "1.0.0"

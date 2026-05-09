@@ -13,8 +13,14 @@ snapshots/
 .codex/
 .claude/
 
+# Backup directories created by installer
+.forge-backup-*
+
 # Dependencies / caches
 node_modules/
 __pycache__/
 *.pyc
 *.log
+
+# Build artifacts
+*.tsbuildinfo

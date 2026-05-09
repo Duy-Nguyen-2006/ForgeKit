@@ -3,6 +3,21 @@ name: ck:code-map
 description: >
   Generate token-bounded codebase summary using code2prompt or gitingest as fallback
   when Serena MCP is unavailable. Use for quick codebase overview without full file reads.
+triggers:
+  - code map
+  - code2prompt
+  - gitingest
+  - map codebase
+  - tóm tắt codebase
+  - sơ đồ code
+non_triggers:
+  - serena
+  - symbol search
+  - read file
+examples:
+  - "xem sơ đồ codebase"
+  - "map code flow trong project"
+  - "tóm tắt codebase cho AI context khi không có Serena"
 metadata:
   author: forgekit
   version: "1.0.0"

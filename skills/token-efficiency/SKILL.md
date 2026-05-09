@@ -1,6 +1,18 @@
 ---
 name: ck:token-efficiency
 description: Token budget rules for ForgeCode-native workflows. Keeps skill detail available but loads it only when needed.
+triggers:
+  - token budget
+  - context budget
+  - minimal reads
+  - token policy
+non_triggers:
+  - code implementation
+  - file editing
+  - testing
+examples:
+  - "quản lý token budget khi task lớn"
+  - "đọc codebase sao cho tiết kiệm token"
 metadata:
   author: forgekit
   version: "1.0.0"

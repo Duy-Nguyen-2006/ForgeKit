@@ -5,6 +5,21 @@ description: >
   Use for large codebases, orientation, understanding project structure
   without reading full files. Replaces reading entire files when exploring.
 argument-hint: "[path-to-repo-or-directory]"
+triggers:
+  - repo map
+  - folder structure
+  - project structure
+  - sơ đồ project
+  - skeleton map
+  - repomap
+non_triggers:
+  - read file content
+  - symbol search
+  - code implementation
+examples:
+  - "map repo structure"
+  - "sơ đồ project này có gì"
+  - "xem folder layout project"
 metadata:
   author: forgekit
   version: "1.0.0"

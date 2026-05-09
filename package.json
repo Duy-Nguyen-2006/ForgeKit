@@ -1,6 +1,6 @@
 {
   "name": "lgmmo-forgekit-installer",
-  "version": "2.1.1",
+  "version": "2.2.0",
   "description": "One-command installer for LGM MMO ForgeKit into the current project.",
   "type": "module",
   "bin": {
@@ -23,7 +23,9 @@
     "README.md"
   ],
   "scripts": {
-    "test:installer": "node bin/lgmmo-forgekit-installer.js --help"
+    "test": "node skills/auto/scripts/auto.test.cjs && node skills/auto/scripts/auto-contract.test.cjs && node skills/auto/scripts/forgecode-adapter.test.cjs && node skills/auto/scripts/codex-adapter.test.cjs && node skills/auto/scripts/claude-adapter.test.cjs",
+    "test:installer": "node bin/lgmmo-forgekit-installer.js --help",
+    "lint": "node scripts/validate-forgekit.cjs && node scripts/validate-registry.cjs && node scripts/validate-skills.cjs"
   },
   "keywords": [
     "forgekit",
