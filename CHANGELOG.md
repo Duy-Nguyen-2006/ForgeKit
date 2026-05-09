@@ -2,7 +2,7 @@
 
 All notable changes to ForgeKit are documented in this file. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
-## [2.4.x] - 2026-05-09
+## [2.4.1] - 2026-05-09
 
 ### Added
 
