@@ -3,7 +3,7 @@ name: ck:scout
 description: "Fast codebase scouting using parallel agents. Use for file discovery, task context gathering, quick searches across directories. Supports internal (Explore) and external (Gemini/OpenCode) agents."
 argument-hint: "[search-target] [ext]"
 metadata:
-  author: claudekit
+  author: forgekit
   version: "1.0.0"
 triggers: ["codebase mới", "explore", "inspect", "map project", "find files", "search across"]
 non_triggers: ["fix", "implement", "deploy", "single file edit"]

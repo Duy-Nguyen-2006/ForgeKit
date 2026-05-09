@@ -3,8 +3,11 @@ name: ck:project-organization
 description: Organize files, directories, and content structure in any project. Use when creating files, determining output paths, organizing existing assets, or standardizing project layout.
 argument-hint: "[directories or files to organize]"
 metadata:
-  author: claudekit
+  author: forgekit
   version: "2.0.0"
+triggers: ["structure", "folder", "organize", "refactor arch", "layout", "sắp xếp", "cấu trúc"]
+non_triggers: ["fix bug", "debug", "deploy", "test"]
+examples: ["organize project structure", "sắp xếp lại folder", "where should this file go"]
 ---
 
 # Project Organization

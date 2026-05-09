@@ -4,6 +4,9 @@ description: "Primary UI/UX skill for ForgeKit. Thin entry for layout, accessibi
 metadata:
   author: forgekit
   version: "2.0.0"
+triggers: ["design", "UI", "UX", "web đẹp", "giao diện", "landing", "responsive", "thiết kế", "trải nghiệm"]
+non_triggers: ["backend", "API", "database", "deploy", "debug"]
+examples: ["design landing page", "thiết kế giao diện đẹp", "improve responsive layout"]
 ---
 
 # UI/UX Pro Max

@@ -3,6 +3,9 @@ name: ck:watzup
 description: >
   Báo cáo nhanh trạng thái project hiện tại. Trigger: "watzup", "status",
   "project status", "đang làm gì".
+triggers: ["watzup", "status", "project status", "đang làm gì", "tiến độ", "what's up", "progress"]
+non_triggers: ["fix", "implement", "create feature", "deploy"]
+examples: ["watzup", "project status", "đang làm gì rồi"]
 ---
 
 # Watzup

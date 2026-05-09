@@ -26,7 +26,7 @@ Orchestrator reads this file to route tasks. Internal only. Do not expose as a u
 | Skill | Trigger keywords | Load path |
 |---|---|---|
 | deploy | deploy, publish, ship, hosting, CI/CD, docker, production | skills/deploy/SKILL.md |
-| git | commit, branch, merge, PR, pull request, push, conventional commit | skills/git/SKILL.md |
+| git | commit, branch, merge, PR, pull request, push, conventional commit, đẩy code, tạo PR | skills/git/SKILL.md |
 | security-scan | security, vulnerability, auth, injection, secret, OWASP, audit | skills/security-scan/SKILL.md |
 | mcp-management | MCP, tool, server config, integration, external tool | skills/mcp-management/SKILL.md |
 
@@ -34,7 +34,7 @@ Orchestrator reads this file to route tasks. Internal only. Do not expose as a u
 
 | Skill | Trigger keywords | Load path |
 |---|---|---|
-| test | test, vitest, jest, playwright, coverage, e2e, unit, integration | skills/test/SKILL.md |
+| test | test, vitest, jest, playwright, coverage, e2e, unit, integration, chạy test | skills/test/SKILL.md |
 | code-review | review, refactor, clean up, best practice, quality, maintainability | skills/code-review/SKILL.md |
 | ck-debug | bug, lỗi, error, không chạy, crash, failing, root cause | skills/ck-debug/SKILL.md |
 | fix | fix, sửa, patch, broken, type error, lint error, failing test | skills/fix/SKILL.md |
@@ -43,13 +43,13 @@ Orchestrator reads this file to route tasks. Internal only. Do not expose as a u
 
 | Skill | Trigger keywords | Load path |
 |---|---|---|
-| scout | codebase mới, chưa biết, explore, inspect, map project | skills/scout/SKILL.md |
-| context-engineering | codebase lớn, chưa biết, symbol, refactor cross-file, tìm function, unfamiliar repo | skills/context-engineering/SKILL.md |
-| diff-context | diff, changed files, git diff, fix context, refactor context, reverse deps, patch context, minimal context | skills/diff-context/SKILL.md |
-| ask | thiếu thông tin, chưa rõ, mơ hồ, không biết bắt đầu từ đâu | skills/ask/SKILL.md |
+| scout | codebase mới, chưa biết, explore, inspect, map project, sơ đồ project, luồng code | skills/scout/SKILL.md |
+| context-engineering | codebase lớn, chưa biết, symbol, refactor cross-file, tìm function, tìm symbol, sơ đồ codebase, unfamiliar repo | skills/context-engineering/SKILL.md |
+| diff-context | diff, changed files, git diff, fix context, refactor context, reverse deps, patch context, minimal context, thay đổi gì, luồng thay đổi, code thay đổi | skills/diff-context/SKILL.md |
+| ask | thiếu thông tin, chưa rõ, mơ hồ, không biết bắt đầu từ đâu, ambiguous, không rõ | skills/ask/SKILL.md |
 | watzup | watzup, status, project status, đang làm gì, tiến độ | skills/watzup/SKILL.md |
-| repomix | repomix, codebase summary, tóm tắt codebase, map project | skills/repomix/SKILL.md |
-| repo-map | repo map, skeleton map, ranked signatures, repomap, orient codebase, tree-sitter map, PageRank code | skills/repo-map/SKILL.md |
-| code-map | code map, code2prompt, gitingest, map codebase, fallback summary, Serena unavailable | skills/code-map/SKILL.md |
+| repomix | repomix, codebase summary, tóm tắt codebase, map project, sơ đồ project, luồng code | skills/repomix/SKILL.md |
+| repo-map | repo map, skeleton map, ranked signatures, repomap, orient codebase, tree-sitter map, PageRank code, sơ đồ repo, skeleton codebase, orient repo | skills/repo-map/SKILL.md |
+| code-map | code map, code2prompt, gitingest, map codebase, fallback summary, Serena unavailable, tóm tắt codebase, sơ đồ code | skills/code-map/SKILL.md |
 | project-organization | structure, folder, organize, refactor arch, layout | skills/project-organization/SKILL.md |
-| docs | tài liệu, README, docs, documentation, guide, changelog | skills/docs/SKILL.md |
+| docs | tài liệu, README, docs, documentation, guide, changelog, viết tài liệu | skills/docs/SKILL.md |

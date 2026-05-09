@@ -41,4 +41,19 @@ assert.ok(command.includes('ForgeCode native tools first'), 'command should prio
 assert.ok(command.includes('Serena MCP'), 'command should mention Serena MCP');
 assert.ok(command.includes('RTK'), 'command should mention RTK');
 
+// v2.1.0 additions
+const ROOT = root;
+const SKILLS = path.join(root, 'skills');
+
+assert.ok(fs.existsSync(path.join(SKILLS, 'repo-map', 'SKILL.md')), 'repo-map SKILL.md exists');
+assert.ok(fs.existsSync(path.join(SKILLS, 'diff-context', 'SKILL.md')), 'diff-context SKILL.md exists');
+assert.ok(fs.existsSync(path.join(SKILLS, 'code-map', 'SKILL.md')), 'code-map SKILL.md exists');
+assert.ok(fs.existsSync(path.join(SKILLS, 'orchestrator', 'references', 'intent-classifier.md')), 'intent-classifier.md exists');
+assert.ok(fs.existsSync(path.join(SKILLS, 'token-efficiency', 'references', 'prompt-caching.md')), 'prompt-caching.md exists');
+assert.ok(fs.existsSync(path.join(SKILLS, 'scout', 'references', 'ast-grep-scouting.md')), 'ast-grep-scouting.md exists');
+assert.ok(fs.existsSync(path.join(SKILLS, 'auto', 'references', 'spec-template.md')), 'spec-template.md exists');
+assert.ok(fs.existsSync(path.join(ROOT, 'hooks', 'pre-tool', 'budget-guard.md')), 'budget-guard.md exists');
+assert.ok(fs.existsSync(path.join(ROOT, '.forgeignore')), '.forgeignore exists');
+assert.ok(fs.existsSync(path.join(ROOT, 'integrations', 'recommended-tools.md')), 'recommended-tools.md exists');
+
 console.log('forgecode-adapter.test: ok');

@@ -47,11 +47,7 @@ forge mcp import --scope user '{"mcpServers":{"serena":{"command":"/home/duy/.lo
 forge mcp reload
 ```
 
-1. Copy file MCP config:
-   ```sh
-   cp .mcp.json.example .mcp.json
-   ```
-2. ForgeCode đọc `.mcp.json` khi start — Serena tự available.
+Quick start: `cp .mcp.json.example .mcp.json` — ForgeCode auto-detects `.mcp.json` on start.
 
 ## Tool Reference (Serena MCP)
 

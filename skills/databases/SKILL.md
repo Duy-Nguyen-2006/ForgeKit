@@ -4,8 +4,11 @@ description: Design schemas, write queries for MongoDB and PostgreSQL. Use for d
 license: MIT
 argument-hint: "[query or schema task]"
 metadata:
-  author: claudekit
+  author: forgekit
   version: "1.0.0"
+triggers: ["schema", "migration", "query", "postgres", "postgresql", "mongo", "index", "cơ sở dữ liệu"]
+non_triggers: ["frontend", "UI", "deploy", "style"]
+examples: ["create database schema", "viết migration mới", "optimize query performance"]
 ---
 
 # Databases Skill

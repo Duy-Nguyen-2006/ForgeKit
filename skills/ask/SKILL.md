@@ -3,6 +3,9 @@ name: ck:ask
 description: >
   Dùng khi request thiếu thông tin quan trọng và không thể assume an toàn.
   Không load cho task rõ ràng.
+triggers: ["thiếu thông tin", "chưa rõ", "mơ hồ", "không biết bắt đầu từ đâu", "unclear", "ambiguous"]
+non_triggers: ["fix", "implement", "deploy", "clear task"]
+examples: ["không hiểu yêu cầu này", "unclear what to do next", "thiếu context để tiếp tục"]
 ---
 
 # Ask

@@ -23,11 +23,13 @@ examples: ["find where User model is defined", "tìm tất cả chỗ gọi func
 
 ### Nếu Serena MCP có:
 
-1. `mcp_serena__find_symbol` tên cần tìm (lookup symbol definition)
-2. `mcp_serena__find_referencing_symbols` nếu cần cross-file references
-3. `mcp_serena__get_symbols_overview` nếu cần map toàn bộ overview
-4. `mcp_serena__search_for_pattern` nếu cần regex/semantic search
+1. `find_symbol` tên cần tìm (lookup symbol definition)
+2. `find_referencing_symbols` nếu cần cross-file references
+3. `get_symbols_overview` nếu cần map toàn bộ overview
+4. `search_for_pattern` nếu cần regex/semantic search
 5. Đọc chính xác file được trỏ đến — không đọc gì thêm
+
+> **Ghi chú:** Tên tool không bao gồm prefix `mcp__serena__` — runtime tự thêm khi gọi MCP server.
 
 ### Nếu không có Serena:
 

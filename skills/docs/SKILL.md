@@ -3,8 +3,11 @@ name: ck:docs
 description: "Analyze codebase and manage project documentation — init, update, summarize."
 argument-hint: "init|update|summarize"
 metadata:
-  author: claudekit
+  author: forgekit
   version: "1.0.0"
+triggers: ["tài liệu", "README", "docs", "documentation", "guide", "changelog", "viết tài liệu"]
+non_triggers: ["fix bug", "implement feature", "deploy", "debug"]
+examples: ["write README", "cập nhật tài liệu", "generate API docs"]
 ---
 
 # Documentation Management

@@ -72,20 +72,26 @@ ForgeKit/
 ├── forgekit.json
 ├── AGENTS.md
 ├── .forge.toml
+├── .forgeignore
 ├── commands/ck:auto.md
 ├── agents/
 ├── skills/
 │   ├── auto/
 │   ├── orchestrator/
 │   ├── token-efficiency/
+│   ├── repo-map/
+│   ├── diff-context/
+│   ├── code-map/
 │   └── ...
 ├── integrations/
 │   ├── rtk.md
-│   └── serena.md
+│   ├── serena.md
+│   └── recommended-tools.md
 ├── hooks/
 │   ├── privacy/
 │   ├── notifications/
-│   └── session-start/
+│   ├── session-start/
+│   └── pre-tool/
 ├── communication/caveman.md
 └── scripts/
     ├── generate-forgecode.py
@@ -284,6 +290,10 @@ Default routing policy:
 6. Use Serena MCP for large codebases, symbols, usages, and refactors when installed.
 7. Do not use context-mode.
 8. Do not use cavemem.
+9. Use `repo-map` for codebase skeleton before reading full files.
+10. Use `diff-context` for fix/refactor tasks — only git diff + reverse deps.
+11. Respect `.forgeignore` patterns for all codebase scanning.
+12. Prompt caching: stable context first, volatile last (see `skills/token-efficiency/references/prompt-caching.md`).
 
 ## Optional Integrations
 
@@ -307,6 +317,30 @@ See:
 integrations/serena.md
 ```
 
+### Repo Map
+
+Generate token-efficient codebase skeleton maps (Aider repomap pattern). Reduces token usage by 50-80% when orienting in large codebases.
+
+### Diff Context
+
+Load only git diff + reverse dependencies for fix/refactor tasks (Continue.dev @diff pattern). Replaces full codebase scan with minimal ~6.5K token context.
+
+### Code Map
+
+Fallback codebase summarization using code2prompt or gitingest when Serena MCP is unavailable.
+
+### AST-based Scouting
+
+Semantic code search using ast-grep — structural pattern matching instead of regex. Less noise, more precise.
+
+### Budget Guard Hook
+
+Pre-tool hook that prevents excessive token reads per turn. Auto-downgrades to Serena or chunks files when budget exceeded.
+
+### Recommended Tools
+
+See `integrations/recommended-tools.md` for tiered open-source tool recommendations and pattern references.
+
 ## Verification
 
 Run structural tests:
@@ -320,6 +354,23 @@ node skills/auto/scripts/claude-adapter.test.cjs
 Expected result: all tests pass.
 
 ## Release Notes
+
+### 2.1.0
+
+- Fixed Serena MCP tool names (find_symbol, find_referencing_symbols, get_symbols_overview, search_for_pattern).
+- Added repo-map skill (Aider repomap pattern, tree-sitter PageRank ranking).
+- Added diff-context skill (Continue.dev @diff pattern, git diff + reverse deps).
+- Added code-map skill (code2prompt/gitingest fallback when Serena unavailable).
+- Added ast-grep wrapper in scout skill (semantic AST search).
+- Added .forgeignore with comprehensive ignore patterns.
+- Added intent-classifier with 60+ few-shot examples and confidence scoring.
+- Added confidence gate to orchestrator (gap < 0.15 → ask disambiguation).
+- Added YAML frontmatter triggers/non_triggers/examples to all skill files.
+- Added prompt caching layout docs (3-tier stable→volatile, 50-70% cache hit).
+- Added budget-guard hook (pre-tool-call, phase-based token caps).
+- Added Spec template ≤200 tokens (Mục tiêu, Phạm vi, Cách kiểm tra, Ngoài phạm vi).
+- Adjusted .forge.toml: token_threshold 60K, retention_window 4, max_sem_search 50.
+- Added recommended-tools.md with tiered open-source tool recommendations.
 
 ### 2.0.0
 

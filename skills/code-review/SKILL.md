@@ -3,8 +3,11 @@ name: ck:code-review
 description: "Review code quality with adversarial rigor. Supports input modes: pending changes, PR number, commit hash, codebase scan. Always-on red-team analysis finds security holes, false assumptions, and failure modes."
 argument-hint: "[#PR | COMMIT | --pending | codebase [parallel]]"
 metadata:
-  author: claudekit
+  author: forgekit
   version: "2.0.0"
+triggers: ["review", "refactor", "clean up", "best practice", "quality", "maintainability", "kiểm tra code"]
+non_triggers: ["debug", "deploy", "create new feature from scratch"]
+examples: ["review this code", "kiểm tra chất lượng", "clean up codebase"]
 ---
 
 # Code Review

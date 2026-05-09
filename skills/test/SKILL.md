@@ -3,8 +3,11 @@ name: ck:test
 description: "Run unit, integration, e2e, and UI tests. Use for test execution, coverage analysis, build verification, visual regression, and QA reports."
 argument-hint: "[context] OR ui [url]"
 metadata:
-  author: claudekit
+  author: forgekit
   version: "1.0.0"
+triggers: ["test", "vitest", "jest", "playwright", "coverage", "e2e", "unit", "integration", "chạy test"]
+non_triggers: ["deploy", "design", "debug root cause", "create feature"]
+examples: ["run tests", "chạy test coverage", "write unit tests for auth"]
 ---
 
 # Testing & Quality Assurance

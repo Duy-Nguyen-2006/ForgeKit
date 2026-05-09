@@ -4,8 +4,11 @@ description: Build with Next.js (App Router, RSC, SSR, ISR), Turborepo monorepos
 license: MIT
 argument-hint: "[framework] [feature]"
 metadata:
-  author: claudekit
+  author: forgekit
   version: "1.0.0"
+triggers: ["next.js", "nextjs", "nuxt", "remix", "vite config", "ssr", "app router", "turborepo"]
+non_triggers: ["backend API", "database", "deploy", "debug"]
+examples: ["setup Next.js app router", "configure turborepo", "implement SSR page"]
 ---
 
 # Web Frameworks Skill Group

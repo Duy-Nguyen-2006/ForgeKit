@@ -3,8 +3,11 @@ name: ck:git
 description: "Git operations with conventional commits. Use for staging, committing, pushing, PRs, merges. Auto-splits commits by type/scope. Security scans for secrets."
 argument-hint: "cm|cp|pr|merge [args]"
 metadata:
-  author: claudekit
+  author: forgekit
   version: "1.0.0"
+triggers: ["commit", "branch", "merge", "PR", "pull request", "push", "conventional commit", "đẩy code"]
+non_triggers: ["fix bug directly", "create feature", "design", "debug"]
+examples: ["commit these changes", "tạo PR", "merge branch vào main"]
 ---
 
 # Git Operations
