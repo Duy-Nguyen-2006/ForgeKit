@@ -1,8 +1,7 @@
 ---
 name: ck:code-map
-description: >
-  Generate token-bounded codebase summary using code2prompt or gitingest as fallback
-  when Serena MCP is unavailable. Use for quick codebase overview without full file reads.
+description: "Code flow and symbol mapping"
+auto_load: false
 triggers:
   - code map
   - code2prompt

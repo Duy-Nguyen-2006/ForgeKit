@@ -1,6 +1,7 @@
 ---
 name: ck:fix
-description: "ALWAYS activate this skill before fixing ANY bug, error, test failure, CI/CD issue, type error, lint, log error, UI issue, code problem."
+description: "Bug fixing workflow with mode selection"
+auto_load: false
 argument-hint: "[issue] --auto|--review|--quick|--parallel"
 metadata:
   author: claudekit

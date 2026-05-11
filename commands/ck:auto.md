@@ -1,6 +1,7 @@
 ---
 name: ck:auto
 description: Spec-first ForgeCode-native autopilot for non-technical users
+auto_load: true
 ---
 
 # ForgeKit Auto
@@ -11,9 +12,10 @@ Use `:ck:auto <desired outcome>` as the only user-facing entrypoint.
 
 1. Spec first. No implementation before approval.
 2. One approval gate only.
-3. After approval: inspect, route, implement, verify, fix, report.
+3. After approval: **ROUTE FIRST**, then inspect, implement, verify, fix, report.
 4. User never chooses skills, agents, files, tests, or tools.
 5. Never report success without verification.
+6. **MANDATORY**: Run routing script before loading any skill — no exceptions.
 
 ## Phase A — Spec Gate
 
@@ -37,33 +39,58 @@ If no Spec has been approved in this conversation:
 
 After approval:
 
-1. Create todos.
-2. Load `ck:orchestrator` and `ck:token-efficiency` mentally or via skill tool when available.
-3. **Route intent deterministically first:**
-   - Run `node scripts/route-intent.cjs "<user intent>"` to get a routing hint.
-   - The hint provides: primary skill, secondary skills, confidence, gap, and action.
-   - **If action = `route`**: Use the hinted primary/secondary skills directly.
-   - **If action = `route-uncertain`**: Use hinted primary, but note uncertainty. Still proceed.
-   - **If action = `disambiguate`**: Ask user ONE disambiguation question (see Confidence Gate below).
-   - **If action = `clarify`**: Ask user for clarification via `ask` skill.
-   - **If action = `no-match`**: Fall back to orchestrator prompt-based routing.
-   - The routing hint is **advisory** — the orchestrator may override if context clearly shows a better skill, but must justify the override.
+### ⚠️ B.0 — MANDATORY FIRST ACTION (DO NOT SKIP)
+
+**Before doing ANYTHING else** (no todo_write, no fs_search, no read, no skill load):
+
+```
+node scripts/route-intent.cjs "<EXACT user intent string>"
+```
+
+Read the JSON output. Then:
+
+- **action = `route`** → Load ONLY the `primary` skill. Proceed to B.1.
+- **action = `route-uncertain`** → Load ONLY the `primary` skill. Note uncertainty. Proceed to B.1.
+- **action = `disambiguate`** → Ask user ONE question from `disambiguate.question` field. STOP until user answers.
+- **action = `clarify`** → Ask user for clarification. STOP until user answers.
+- **action = `no-match`** → Fall back to prompt-based orchestrator routing.
+
+**Log the routing decision immediately:**
+
+```
+echo '{"intent":"<user intent>","primary":"<result>","secondary":<result>,"confidence":<result>,"action":"<result>","gap":<result>,"verb":"<result>"}' | node hooks/post-tool/route-log.cjs
+```
+
+**CRITICAL**: If you skip this step and load skills directly, routing is UNVERIFIED and UNOBSERVABLE. Always run route-intent first.
+
+### B.1 — Plan
+
+1. Create todos based on routing hint.
+2. Load `ck:orchestrator` and `ck:token-efficiency` mentally — do NOT auto-load them as skills.
+
+### B.2 — Execute
+
+3. Load PRIMARY skill only (per `maxPrimarySkillsInitial: 1`). Do NOT load secondary skills yet.
 4. Inspect lightly:
    - package/framework/test scripts
    - relevant files only
    - existing conventions
-5. Route to the minimum skill/tool set.
-6. Implement incrementally.
+5. Implement incrementally.
+6. If task requires a secondary skill (based on routing hint), load it now — one at a time, only when needed.
 7. Verify with strongest available build/test/lint/typecheck/smoke check.
 8. If verification fails, diagnose, fix, rerun.
-9. Log routing decision: pipe routing result to `hooks/post-tool/route-log.cjs`.
-10. Final report only after verification.
+
+### B.3 — Report
+
+9. Final report only after verification.
 
 ## Token Policy
 
+- **Route BEFORE loading skills** — prevents unnecessary skill auto-load.
 - ForgeCode native tools first.
 - Targeted `fs_search`/`read` before broad scout.
-- Max 1 primary skill initially; secondary only when needed.
+- **Max 1 primary skill initially**; secondary only when routing hint says so.
+- Do NOT auto-load skills based on keyword matching — use route-intent.cjs output only.
 - Do not read full reference directories.
 - Use RTK for noisy shell output if installed.
 - Use Serena MCP for large repos, symbols, references, refactors if installed.

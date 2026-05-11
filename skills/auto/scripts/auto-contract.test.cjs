@@ -163,3 +163,74 @@ for (const t of testIntents) {
 }
 
 console.log('auto-contract.test (Phase 5): ok');
+
+// --- Phase 5.1+: Runtime router enforcement + skill auto-load constraints ---
+
+// PR-5.1: ck:auto.md must have MANDATORY FIRST ACTION
+assert.ok(autoCommand.includes('MANDATORY FIRST ACTION') || autoCommand.includes('MANDATORY'), 'ck:auto.md must have MANDATORY routing step');
+assert.ok(autoCommand.includes('route-intent.cjs'), 'ck:auto.md must reference route-intent.cjs as mandatory step');
+assert.ok(autoCommand.includes('DO NOT SKIP'), 'ck:auto.md must warn DO NOT SKIP for routing step');
+
+// PR-5.1: auto/SKILL.md must reference routing as MANDATORY FIRST
+assert.ok(autoSkill.includes('MANDATORY FIRST') || autoSkill.includes('MANDATORY'), 'auto/SKILL.md must have MANDATORY routing step');
+assert.ok(autoSkill.includes('route-intent.cjs'), 'auto/SKILL.md must reference route-intent.cjs');
+
+// PR-5.2: ck:auto must have auto_load: true
+const autoFmMatch = autoSkill.match(/^---\n([\s\S]*?)\n---/);
+assert.ok(autoFmMatch, 'auto/SKILL.md must have YAML frontmatter');
+const autoFrontmatter = autoFmMatch[1];
+assert.ok(/auto_load:\s*true/.test(autoFrontmatter), 'auto/SKILL.md must have auto_load: true');
+
+// PR-5.2: All non-auto skills must have auto_load: false
+const skillsDir = path.join(root, 'skills');
+const skillDirs = fs.readdirSync(skillsDir, { withFileTypes: true })
+  .filter(d => d.isDirectory() && d.name !== 'auto')
+  .map(d => d.name);
+
+for (const dir of skillDirs) {
+  const skillMd = path.join(skillsDir, dir, 'SKILL.md');
+  if (!fs.existsSync(skillMd)) continue;
+
+  const content = fs.readFileSync(skillMd, 'utf8');
+  const fmMatch = content.match(/^---\n([\s\S]*?)\n---/);
+  if (!fmMatch) continue;
+
+  const frontmatter = fmMatch[1];
+  assert.ok(
+    /auto_load:\s*false/.test(frontmatter),
+    `skills/${dir}/SKILL.md must have auto_load: false (PR-5.2: prevent unwanted auto-load)`
+  );
+}
+
+// PR-5.2: Description length check (≤80 chars for non-auto skills)
+for (const dir of skillDirs) {
+  const skillMd = path.join(skillsDir, dir, 'SKILL.md');
+  if (!fs.existsSync(skillMd)) continue;
+
+  const content = fs.readFileSync(skillMd, 'utf8');
+  const fmMatch = content.match(/^---\n([\s\S]*?)\n---/);
+  if (!fmMatch) continue;
+
+  const frontmatter = fmMatch[1];
+  const descMatch = frontmatter.match(/description:\s*["']?(.+?)["']?\s*$/m);
+  if (descMatch) {
+    const desc = descMatch[1].trim();
+    assert.ok(
+      desc.length <= 80,
+      `skills/${dir}/SKILL.md description too long (${desc.length} chars, max 80): "${desc.substring(0, 40)}..."`
+    );
+  }
+}
+
+// PR-5.3: token-efficiency must mention auto_load constraint and description length rule
+assert.ok(tokenEfficiency.includes('auto_load: false'), 'token-efficiency must mention auto_load: false constraint');
+assert.ok(tokenEfficiency.includes('≤80'), 'token-efficiency must mention description ≤80 chars rule');
+assert.ok(tokenEfficiency.includes('route-intent.cjs'), 'token-efficiency must reference route-intent.cjs for skill loading');
+
+// PR-5.1: ck:auto.md must enforce "Max 1 primary skill initially" 
+assert.ok(autoCommand.includes('maxPrimarySkillsInitial') || autoCommand.includes('1 primary skill'), 'ck:auto.md must enforce 1 primary skill limit');
+
+// PR-5.1: ck:auto.md must NOT allow auto-loading skills based on keyword matching
+assert.ok(autoCommand.includes('auto-load') || autoCommand.includes('auto_load'), 'ck:auto.md must mention auto-load constraint');
+
+console.log('auto-contract.test (Phase 5.1+): ok');

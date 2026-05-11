@@ -1,6 +1,7 @@
 ---
 name: ck:mcp-management
-description: Manage MCP servers - discover, analyze, execute tools/prompts/resources. Use for MCP integrations, intelligent tool selection, multi-server management, context-efficient capability discovery.
+description: MCP server configuration and management
+auto_load: false
 argument-hint: "[task or server-name]"
 metadata:
   author: forgekit

@@ -1,8 +1,7 @@
 ---
 name: ck:browser-automation
-description: >
-  Browser automation & web scraping patterns. Playwright/Puppeteer headless,
-  data extraction, screenshot, crawl. Focused on scrape — not testing.
+description: "Browser automation and web scraping"
+auto_load: false
 triggers:
   - scrape
   - crawl

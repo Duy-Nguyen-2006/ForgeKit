@@ -1,9 +1,7 @@
 ---
 name: ck:diff-context
-description: >
-  Load minimal context từ git diff cho fix/refactor tasks. Chỉ load
-  changed files + reverse deps thay vì scan toàn bộ codebase.
-  Pattern từ Continue.dev @diff provider và OpenHands git_changes.
+description: "Git diff context for focused changes"
+auto_load: false
 argument-hint: "[--base=REF] [--scope=files|deps|all]"
 triggers:
   - diff

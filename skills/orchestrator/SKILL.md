@@ -1,6 +1,7 @@
 ---
 name: ck:orchestrator
-description: ForgeKit router for non-technical :ck:auto workflows. Chooses minimum skills/tools after Spec approval.
+description: "Internal skill routing after Spec approval"
+auto_load: false
 metadata:
   author: forgekit
   version: "2.0.0"

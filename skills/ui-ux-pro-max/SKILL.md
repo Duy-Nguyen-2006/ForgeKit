@@ -1,6 +1,7 @@
 ---
 name: ck:ui-ux-pro-max
-description: "Primary UI/UX skill for ForgeKit. Thin entry for layout, accessibility, component quality, responsive behavior, and design review. Deep details live in references/."
+description: "UI/UX design, layout, and accessibility"
+auto_load: false
 metadata:
   author: forgekit
   version: "2.0.0"

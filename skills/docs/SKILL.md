@@ -1,6 +1,7 @@
 ---
 name: ck:docs
-description: "Analyze codebase and manage project documentation — init, update, summarize."
+description: "Documentation management"
+auto_load: false
 argument-hint: "init|update|summarize"
 metadata:
   author: forgekit

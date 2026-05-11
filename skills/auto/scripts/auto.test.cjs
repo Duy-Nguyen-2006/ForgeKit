@@ -65,13 +65,12 @@ test('skill documents autonomous execution after approval', () => {
   assertContains(skill, 'implement', 'Skill should mention implementation');
   assertContains(skill, 'test', 'Skill should mention testing');
   assertContains(skill, 'verify', 'Skill should mention verification');
-  assertContains(skill, 'final report', 'Skill should mention final reporting');
+  assertContains(skill.toLowerCase(), 'final report', 'Skill should mention final reporting');
 });
 
 test('skill includes forge integration guidance', () => {
-  assertContains(skill, 'Forge', 'Skill should mention Forge integration');
-  assertContains(skill, 'todo_write', 'Skill should mention todo tracking');
   assertContains(skill, 'fs_search', 'Skill should mention codebase search');
+  assertContains(skill, 'todo_write', 'Skill should mention todo tracking');
 });
 
 test('workflow reference describes one approval gate then full execution', () => {

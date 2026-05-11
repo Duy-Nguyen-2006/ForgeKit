@@ -1,8 +1,7 @@
 ---
 name: ck:auth
-description: >
-  Authentication & authorization patterns for web apps. JWT, OAuth, session management,
-  password hashing, RBAC. OWASP-light checklist. Cooperates with security-scan.
+description: "Auth patterns: JWT, OAuth, session, RBAC"
+auto_load: false
 triggers:
   - login
   - signup

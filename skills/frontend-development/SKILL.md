@@ -1,6 +1,7 @@
 ---
 name: ck:frontend-development
-description: Build React/TypeScript frontends with modern patterns. Use for components, Suspense, lazy loading, useSuspenseQuery, MUI v7 styling, TanStack Router, performance optimization.
+description: Frontend component and UI logic
+auto_load: false
 argument-hint: "[component or feature]"
 metadata:
   author: forgekit

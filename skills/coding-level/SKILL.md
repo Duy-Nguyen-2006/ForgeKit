@@ -1,8 +1,7 @@
 ---
 name: ck:coding-level
-description: >
-  Điều chỉnh độ phức tạp output theo level người dùng.
-  Mặc định: non-tech.
+description: "Output complexity level adjustment"
+auto_load: false
 triggers: ["giải thích đơn giản", "non-tech", "technical detail", "how it works", "giải thích chi tiết"]
 non_triggers: ["fix", "implement", "deploy", "test"]
 examples: ["giải thích đơn giản cho tôi", "technical detail please", "how does this work"]

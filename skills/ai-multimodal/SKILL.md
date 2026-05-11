@@ -1,8 +1,7 @@
 ---
 name: ck:ai-multimodal
-description: >
-  AI/multimodal integration patterns. OpenAI, Anthropic, Gemini, image generation,
-  vision, transcription, embeddings. Pattern guidance only — no SDK bundled.
+description: "AI/multimodal integration guidance"
+auto_load: false
 triggers:
   - openai
   - anthropic

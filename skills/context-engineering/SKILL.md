@@ -1,9 +1,7 @@
 ---
 name: ck:context-engineering
-description: >
-  Load khi task yêu cầu hiểu codebase chưa quen, repo lớn,
-  cross-file refactor, hoặc tìm symbol/usage. Không load cho
-  task 1-file rõ ràng.
+description: "Cross-file symbol and reference analysis"
+auto_load: false
 triggers: ["codebase lớn", "symbol", "refactor cross-file", "tìm function", "unfamiliar repo", "cross-file"]
 non_triggers: ["single file", "simple edit", "deploy", "create new project"]
 examples: ["find where User model is defined", "tìm tất cả chỗ gọi function X", "cross-file rename refactor"]

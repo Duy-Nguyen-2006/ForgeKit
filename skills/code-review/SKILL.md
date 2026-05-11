@@ -1,6 +1,7 @@
 ---
 name: ck:code-review
-description: "Review code quality with adversarial rigor. Supports input modes: pending changes, PR number, commit hash, codebase scan. Always-on red-team analysis finds security holes, false assumptions, and failure modes."
+description: "Code quality review and analysis"
+auto_load: false
 argument-hint: "[#PR | COMMIT | --pending | codebase [parallel]]"
 metadata:
   author: forgekit

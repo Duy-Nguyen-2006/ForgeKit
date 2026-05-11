@@ -1,6 +1,7 @@
 ---
 name: ck:token-efficiency
-description: Token budget rules for ForgeCode-native workflows. Keeps skill detail available but loads it only when needed.
+description: "Token budget rules for workflows"
+auto_load: false
 triggers:
   - token budget
   - context budget
@@ -30,6 +31,9 @@ Goal: preserve skill quality while minimizing default context.
 - Never load an entire skill directory.
 - Start with max 1 primary skill.
 - Add secondary skill only after a blocker or concrete requirement appears.
+- **Do NOT auto-load skills** — use `scripts/route-intent.cjs` routing hint to determine which skill to load.
+- **Skill description must be ≤80 chars** — long descriptions with trigger keywords cause unwanted auto-load.
+- All non-entry skills have `auto_load: false` — they load on-demand only when the runtime router says so.
 
 ## Codebase Policy
 

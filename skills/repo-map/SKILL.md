@@ -1,9 +1,7 @@
 ---
 name: ck:repo-map
-description: >
-  Generate a token-efficient repo skeleton map ranked by importance.
-  Use for large codebases, orientation, understanding project structure
-  without reading full files. Replaces reading entire files when exploring.
+description: "Repository skeleton map generation"
+auto_load: false
 argument-hint: "[path-to-repo-or-directory]"
 triggers:
   - repo map

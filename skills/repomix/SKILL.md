@@ -1,9 +1,7 @@
 ---
 name: ck:repomix
-description: >
-  Tạo codebase summary để dùng với watzup hoặc context-engineering.
-  Chỉ chạy khi user yêu cầu rõ hoặc khi watzup không tìm thấy summary.
-  Hỗ trợ preset theo loại project, chunked output, và .forgeignore.
+description: "Codebase summary generation"
+auto_load: false
 triggers: ["repomix", "codebase summary", "tóm tắt codebase", "map project", "sơ đồ project", "luồng code"]
 non_triggers: ["fix bug", "create feature", "deploy", "single file"]
 examples: ["repomix this repo", "tóm tắt codebase", "generate codebase summary"]

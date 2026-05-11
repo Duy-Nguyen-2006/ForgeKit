@@ -1,8 +1,7 @@
 ---
 name: ck:web-testing
-description: >
-  E2E and browser testing with Playwright or Cypress. Smoke tests, UI automation,
-  visual regression. Complements the test skill, does not replace it.
+description: "E2E browser testing with Playwright or Cypress"
+auto_load: false
 triggers:
   - playwright
   - cypress

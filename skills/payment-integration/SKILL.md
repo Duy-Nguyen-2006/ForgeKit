@@ -1,8 +1,7 @@
 ---
 name: ck:payment-integration
-description: >
-  Payment integration patterns for web apps. Stripe, PayPal, MoMo, VNPay,
-  checkout flows, subscriptions, webhook handling. Env-based config, no secrets in code.
+description: "Payment flows: Stripe, PayPal, MoMo, VNPay"
+auto_load: false
 triggers:
   - stripe
   - paypal

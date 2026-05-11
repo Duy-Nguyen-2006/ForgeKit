@@ -1,8 +1,7 @@
 ---
 name: ck:document-processing
-description: >
-  Document processing patterns. PDF, DOCX, XLSX, PPTX parsing, generation,
-  extraction. Guides per file type — no binary dependencies bundled.
+description: "Document parsing: PDF, DOCX, XLSX, PPTX"
+auto_load: false
 triggers:
   - pdf
   - docx

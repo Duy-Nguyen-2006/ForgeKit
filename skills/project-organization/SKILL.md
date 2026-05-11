@@ -1,6 +1,7 @@
 ---
 name: ck:project-organization
-description: Organize files, directories, and content structure in any project. Use when creating files, determining output paths, organizing existing assets, or standardizing project layout.
+description: "Project structure and file organization"
+auto_load: false
 argument-hint: "[directories or files to organize]"
 metadata:
   author: forgekit

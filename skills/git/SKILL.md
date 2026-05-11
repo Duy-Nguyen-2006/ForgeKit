@@ -1,6 +1,7 @@
 ---
 name: ck:git
-description: "Git operations with conventional commits. Use for staging, committing, pushing, PRs, merges. Auto-splits commits by type/scope. Security scans for secrets."
+description: "Git workflow and conventional commits"
+auto_load: false
 argument-hint: "cm|cp|pr|merge [args]"
 metadata:
   author: forgekit
