@@ -107,12 +107,18 @@ assert.strictEqual(typeof routeIntent.route, 'function', 'route-intent.cjs must 
 assert.strictEqual(typeof routeIntent.scoreIntent, 'function', 'route-intent.cjs must export scoreIntent function');
 assert.ok(Array.isArray(routeIntent.ROUTING_TABLE), 'route-intent.cjs must export ROUTING_TABLE');
 
-// 5.2 ck:auto.md must reference routing hint
-assert.ok(autoCommand.includes('route-intent.cjs'), 'ck:auto.md must reference route-intent.cjs');
+// 5.2 ck:auto.md must reference routing hint (MCP tool preferred, shell fallback)
+assert.ok(
+  autoCommand.includes('route_intent') || autoCommand.includes('route-intent.cjs'),
+  'ck:auto.md must reference route_intent MCP tool or route-intent.cjs'
+);
 assert.ok(autoCommand.includes('routing hint'), 'ck:auto.md must mention routing hint');
 assert.ok(autoCommand.includes('disambiguate'), 'ck:auto.md must handle disambiguate action');
 assert.ok(autoCommand.includes('no-match'), 'ck:auto.md must handle no-match action');
-assert.ok(autoCommand.includes('route-log.cjs'), 'ck:auto.md must reference route-log hook');
+assert.ok(
+  autoCommand.includes('route-log.cjs') || autoCommand.includes('auto-logs'),
+  'ck:auto.md must reference route logging (MCP auto-logs or manual route-log.cjs)'
+);
 
 // 5.3 eval-routing.cjs must exist
 const evalRoutingPath = path.join(root, 'scripts', 'eval-routing.cjs');
@@ -166,14 +172,20 @@ console.log('auto-contract.test (Phase 5): ok');
 
 // --- Phase 5.1+: Runtime router enforcement + skill auto-load constraints ---
 
-// PR-5.1: ck:auto.md must have MANDATORY FIRST ACTION
+// PR-5.1: ck:auto.md must have MANDATORY FIRST ACTION (MCP tool or shell)
 assert.ok(autoCommand.includes('MANDATORY FIRST ACTION') || autoCommand.includes('MANDATORY'), 'ck:auto.md must have MANDATORY routing step');
-assert.ok(autoCommand.includes('route-intent.cjs'), 'ck:auto.md must reference route-intent.cjs as mandatory step');
+assert.ok(
+  autoCommand.includes('route_intent') || autoCommand.includes('route-intent.cjs'),
+  'ck:auto.md must reference route_intent MCP tool or route-intent.cjs as mandatory step'
+);
 assert.ok(autoCommand.includes('DO NOT SKIP'), 'ck:auto.md must warn DO NOT SKIP for routing step');
 
-// PR-5.1: auto/SKILL.md must reference routing as MANDATORY FIRST
+// PR-5.1: auto/SKILL.md must reference routing as MANDATORY FIRST (MCP tool or shell)
 assert.ok(autoSkill.includes('MANDATORY FIRST') || autoSkill.includes('MANDATORY'), 'auto/SKILL.md must have MANDATORY routing step');
-assert.ok(autoSkill.includes('route-intent.cjs'), 'auto/SKILL.md must reference route-intent.cjs');
+assert.ok(
+  autoSkill.includes('route_intent') || autoSkill.includes('route-intent.cjs'),
+  'auto/SKILL.md must reference route_intent MCP tool or route-intent.cjs'
+);
 
 // PR-5.2: ck:auto must have auto_load: true
 const autoFmMatch = autoSkill.match(/^---\n([\s\S]*?)\n---/);
@@ -234,3 +246,53 @@ assert.ok(autoCommand.includes('maxPrimarySkillsInitial') || autoCommand.include
 assert.ok(autoCommand.includes('auto-load') || autoCommand.includes('auto_load'), 'ck:auto.md must mention auto-load constraint');
 
 console.log('auto-contract.test (Phase 5.1+): ok');
+
+// --- Phase 5.2: MCP Server assertions ---
+
+// MCP server directory must exist
+const mcpServerDir = path.join(root, 'mcp-server');
+assert.ok(fs.existsSync(mcpServerDir), 'mcp-server/ directory must exist');
+
+// MCP server entry point must exist
+const mcpIndex = path.join(mcpServerDir, 'index.cjs');
+assert.ok(fs.existsSync(mcpIndex), 'mcp-server/index.cjs must exist');
+
+// MCP server package.json must exist with correct name
+const mcpPkg = path.join(mcpServerDir, 'package.json');
+assert.ok(fs.existsSync(mcpPkg), 'mcp-server/package.json must exist');
+const mcpPkgData = JSON.parse(fs.readFileSync(mcpPkg, 'utf8'));
+assert.ok(mcpPkgData.name.includes('forgekit'), 'mcp-server package name must include "forgekit"');
+assert.ok(mcpPkgData.dependencies['@modelcontextprotocol/sdk'], 'mcp-server must depend on @modelcontextprotocol/sdk');
+
+// .mcp.json must exist and reference forgekit-router
+const mcpJsonPath = path.join(root, '.mcp.json');
+assert.ok(fs.existsSync(mcpJsonPath), '.mcp.json must exist');
+const mcpJson = JSON.parse(fs.readFileSync(mcpJsonPath, 'utf8'));
+assert.ok(mcpJson.mcpServers, '.mcp.json must have mcpServers');
+assert.ok(mcpJson.mcpServers['forgekit-router'], '.mcp.json must have forgekit-router server config');
+assert.ok(
+  mcpJson.mcpServers['forgekit-router'].command === 'node',
+  'forgekit-router must use node command'
+);
+assert.ok(
+  mcpJson.mcpServers['forgekit-router'].args.includes('mcp-server/index.cjs'),
+  'forgekit-router args must include mcp-server/index.cjs'
+);
+
+// ck:auto.md must prefer route_intent MCP tool over shell command
+assert.ok(
+  autoCommand.includes('route_intent') && autoCommand.includes('MCP tool'),
+  'ck:auto.md must reference route_intent as MCP tool (primary method)'
+);
+assert.ok(
+  autoCommand.includes('Fallback') || autoCommand.includes('fallback'),
+  'ck:auto.md must include shell fallback for non-MCP environments'
+);
+
+// auto/SKILL.md must reference route_intent MCP tool
+assert.ok(
+  autoSkill.includes('route_intent'),
+  'auto/SKILL.md must reference route_intent MCP tool'
+);
+
+console.log('auto-contract.test (Phase 5.2 MCP): ok');

@@ -1,0 +1,21 @@
+{
+  "name": "@forgekit/mcp-router",
+  "version": "1.0.0",
+  "description": "MCP server exposing ForgeKit routing as native tools for ForgeCode auto-discovery",
+  "main": "index.cjs",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node index.cjs",
+    "dev": "node --watch index.cjs"
+  },
+  "keywords": ["forgekit", "mcp", "routing", "forgecode"],
+  "author": "LGM MMO",
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.29.0",
+    "zod": "^4.4.3"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

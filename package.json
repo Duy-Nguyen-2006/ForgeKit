@@ -1,6 +1,6 @@
 {
   "name": "lgmmo-forgekit-installer",
-  "version": "2.5.1",
+  "version": "2.6.0",
   "description": "One-command installer for LGM MMO ForgeKit into the current project.",
   "type": "module",
   "bin": {
@@ -16,7 +16,8 @@
     "AGENTS.md",
     ".forge.toml",
     ".forgeignore",
-    ".mcp.json.example",
+    "mcp-server/",
+    ".mcp.json",
     "integrations/",
     "communication/",
     "hooks/",
@@ -30,6 +31,7 @@
     "route:check": "node scripts/route-intent.cjs",
     "route:status": "node scripts/route-status.cjs",
     "route:coverage": "node scripts/route-status.cjs --coverage",
+    "test:mcp": "node mcp-server/index.cjs --test",
     "test:installer": "node bin/lgmmo-forgekit-installer.js --help",
     "lint": "node scripts/validate-forgekit.cjs && node scripts/validate-registry.cjs && node scripts/validate-skills.cjs"
   },

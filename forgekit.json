@@ -1,7 +1,7 @@
 {
   "schema": "https://forgekit.dev/schemas/forgecode-native.v1.json",
   "provider": "forgecode",
-  "version": "2.5.1",
+  "version": "2.6.0",
   "nativeRuntimeDir": ".",
   "globalRuntimeDir": "~/ForgeKit",
   "entrypoints": [
@@ -25,6 +25,8 @@
   },
   "routing": {
     "runtimeHint": true,
+    "method": "mcp",
+    "mcpServer": "mcp-server/index.cjs",
     "script": "scripts/route-intent.cjs",
     "evalScript": "scripts/eval-routing.cjs",
     "statusScript": "scripts/route-status.cjs",
@@ -36,6 +38,13 @@
       "noMatch": 0.30
     },
     "gapThreshold": 0.15
+  },
+  "mcp": {
+    "forgekit-router": {
+      "command": "node",
+      "args": ["mcp-server/index.cjs"],
+      "tools": ["route_intent", "route_status", "route_log"]
+    }
   },
   "integrations": {
     "rtk": "integrations/rtk.md",

@@ -1,5 +1,5 @@
 .credentials.json
-.mcp.json
+.mcp.json.local
 hooks/config.json
 .forge.db*
 .forge_history
@@ -24,3 +24,7 @@ __pycache__/
 
 # Build artifacts
 *.tsbuildinfo
+.forgekit/
+
+# MCP server dependencies
+mcp-server/node_modules/
