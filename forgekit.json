@@ -1,7 +1,7 @@
 {
   "schema": "https://forgekit.dev/schemas/forgecode-native.v1.json",
   "provider": "forgecode",
-  "version": "2.4.1",
+  "version": "2.5.0",
   "nativeRuntimeDir": ".",
   "globalRuntimeDir": "~/ForgeKit",
   "entrypoints": [
@@ -20,7 +20,22 @@
   "assetDirectories": {
     "agents": "agents",
     "commands": "commands",
-    "skills": "skills"
+    "skills": "skills",
+    "tests": "tests"
+  },
+  "routing": {
+    "runtimeHint": true,
+    "script": "scripts/route-intent.cjs",
+    "evalScript": "scripts/eval-routing.cjs",
+    "statusScript": "scripts/route-status.cjs",
+    "fixtures": "tests/routing-fixtures.json",
+    "confidenceThresholds": {
+      "routeDirect": 0.90,
+      "routeWithSecondary": 0.75,
+      "uncertain": 0.60,
+      "noMatch": 0.30
+    },
+    "gapThreshold": 0.15
   },
   "integrations": {
     "rtk": "integrations/rtk.md",
@@ -62,6 +77,14 @@
       "config": "hooks/pre-tool/budget-guard.cjs",
       "docs": "hooks/pre-tool/HOOK.md",
       "trigger": "pre-tool-call"
+    },
+    "postToolRouteLog": {
+      "enabled": true,
+      "config": "hooks/post-tool/route-log.cjs",
+      "docs": "hooks/post-tool/HOOK.md",
+      "trigger": "post-routing-decision",
+      "logDir": ".forgekit",
+      "maxLogSize": 5242880
     }
   },
   "behavior": {

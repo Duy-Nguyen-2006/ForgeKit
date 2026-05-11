@@ -96,3 +96,70 @@ for (const pat of requiredPatterns) {
 }
 
 console.log('auto-contract.test: ok');
+
+// --- Phase 5: Runtime routing reliability assertions ---
+
+// 5.1 route-intent.cjs must exist and export route function
+const routeIntentPath = path.join(root, 'scripts', 'route-intent.cjs');
+assert.ok(fs.existsSync(routeIntentPath), 'scripts/route-intent.cjs must exist');
+const routeIntent = require(routeIntentPath);
+assert.strictEqual(typeof routeIntent.route, 'function', 'route-intent.cjs must export route function');
+assert.strictEqual(typeof routeIntent.scoreIntent, 'function', 'route-intent.cjs must export scoreIntent function');
+assert.ok(Array.isArray(routeIntent.ROUTING_TABLE), 'route-intent.cjs must export ROUTING_TABLE');
+
+// 5.2 ck:auto.md must reference routing hint
+assert.ok(autoCommand.includes('route-intent.cjs'), 'ck:auto.md must reference route-intent.cjs');
+assert.ok(autoCommand.includes('routing hint'), 'ck:auto.md must mention routing hint');
+assert.ok(autoCommand.includes('disambiguate'), 'ck:auto.md must handle disambiguate action');
+assert.ok(autoCommand.includes('no-match'), 'ck:auto.md must handle no-match action');
+assert.ok(autoCommand.includes('route-log.cjs'), 'ck:auto.md must reference route-log hook');
+
+// 5.3 eval-routing.cjs must exist
+const evalRoutingPath = path.join(root, 'scripts', 'eval-routing.cjs');
+assert.ok(fs.existsSync(evalRoutingPath), 'scripts/eval-routing.cjs must exist');
+
+// 5.4 routing-fixtures.json must exist with ≥50 fixtures
+const fixturesPath = path.join(root, 'tests', 'routing-fixtures.json');
+assert.ok(fs.existsSync(fixturesPath), 'tests/routing-fixtures.json must exist');
+const fixtures = JSON.parse(fs.readFileSync(fixturesPath, 'utf8'));
+assert.ok(Array.isArray(fixtures.fixtures), 'routing-fixtures.json must have fixtures array');
+assert.ok(fixtures.fixtures.length >= 50, `routing-fixtures.json must have ≥50 fixtures (got ${fixtures.fixtures.length})`);
+const viFixtures = fixtures.fixtures.filter(f => f.language === 'vi');
+assert.ok(viFixtures.length >= 20, `routing-fixtures.json must have ≥20 Vietnamese fixtures (got ${viFixtures.length})`);
+
+// 5.5 route-log.cjs must exist
+const routeLogPath = path.join(root, 'hooks', 'post-tool', 'route-log.cjs');
+assert.ok(fs.existsSync(routeLogPath), 'hooks/post-tool/route-log.cjs must exist');
+const routeLogHookMd = path.join(root, 'hooks', 'post-tool', 'HOOK.md');
+assert.ok(fs.existsSync(routeLogHookMd), 'hooks/post-tool/HOOK.md must exist');
+
+// 5.6 route-status.cjs must exist
+const routeStatusPath = path.join(root, 'scripts', 'route-status.cjs');
+assert.ok(fs.existsSync(routeStatusPath), 'scripts/route-status.cjs must exist');
+
+// 5.8 forgekit.json must have routing config
+const manifestV5 = JSON.parse(fs.readFileSync(path.join(root, 'forgekit.json'), 'utf8'));
+assert.ok(manifestV5.routing, 'forgekit.json must have routing section');
+assert.ok(manifestV5.routing.runtimeHint, 'forgekit.json routing must have runtimeHint');
+assert.strictEqual(manifestV5.routing.runtimeHint, true, 'forgekit.json routing.runtimeHint must be true');
+assert.ok(manifestV5.routing.script, 'forgekit.json routing must have script path');
+assert.ok(manifestV5.routing.evalScript, 'forgekit.json routing must have evalScript path');
+assert.ok(manifestV5.routing.fixtures, 'forgekit.json routing must have fixtures path');
+assert.ok(manifestV5.hooks.postToolRouteLog, 'forgekit.json must have postToolRouteLog hook config');
+
+// Route-intent basic smoke tests
+const testIntents = [
+  { intent: 'Sửa lỗi TypeError', expected: 'fix' },
+  { intent: 'Tạo API endpoint', expected: 'backend-development' },
+  { intent: 'Deploy lên Vercel', expected: 'deploy' },
+  { intent: 'Viết unit test', expected: 'test' },
+  { intent: 'Thiết kế landing page đẹp', expected: 'ui-ux-pro-max' },
+];
+for (const t of testIntents) {
+  const result = routeIntent.route(t.intent);
+  assert.strictEqual(result.primary, t.expected, `route("${t.intent}") should return primary=${t.expected}, got ${result.primary}`);
+  assert.ok(result.confidence >= 0.30, `route("${t.intent}") confidence should be ≥0.30, got ${result.confidence}`);
+  assert.ok(['route', 'route-uncertain', 'disambiguate'].includes(result.action), `route("${t.intent}") action should be valid, got ${result.action}`);
+}
+
+console.log('auto-contract.test (Phase 5): ok');

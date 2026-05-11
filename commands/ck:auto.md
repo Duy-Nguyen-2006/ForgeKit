@@ -39,15 +39,25 @@ After approval:
 
 1. Create todos.
 2. Load `ck:orchestrator` and `ck:token-efficiency` mentally or via skill tool when available.
-3. Inspect lightly:
+3. **Route intent deterministically first:**
+   - Run `node scripts/route-intent.cjs "<user intent>"` to get a routing hint.
+   - The hint provides: primary skill, secondary skills, confidence, gap, and action.
+   - **If action = `route`**: Use the hinted primary/secondary skills directly.
+   - **If action = `route-uncertain`**: Use hinted primary, but note uncertainty. Still proceed.
+   - **If action = `disambiguate`**: Ask user ONE disambiguation question (see Confidence Gate below).
+   - **If action = `clarify`**: Ask user for clarification via `ask` skill.
+   - **If action = `no-match`**: Fall back to orchestrator prompt-based routing.
+   - The routing hint is **advisory** — the orchestrator may override if context clearly shows a better skill, but must justify the override.
+4. Inspect lightly:
    - package/framework/test scripts
    - relevant files only
    - existing conventions
-4. Route to the minimum skill/tool set.
-5. Implement incrementally.
-6. Verify with strongest available build/test/lint/typecheck/smoke check.
-7. If verification fails, diagnose, fix, rerun.
-8. Final report only after verification.
+5. Route to the minimum skill/tool set.
+6. Implement incrementally.
+7. Verify with strongest available build/test/lint/typecheck/smoke check.
+8. If verification fails, diagnose, fix, rerun.
+9. Log routing decision: pipe routing result to `hooks/post-tool/route-log.cjs`.
+10. Final report only after verification.
 
 ## Token Policy
 
