@@ -19,7 +19,7 @@ Orchestrator reads this file to route tasks. Internal only. Do not expose as a u
 | frontend-development | component, react, vue, page, hook, client UI logic | skills/frontend-development/SKILL.md |
 | ui-ux-pro-max | design, UI, UX, web đẹp, giao diện, landing, responsive | skills/ui-ux-pro-max/SKILL.md |
 | databases | schema, migration, query, postgres, postgresql, mongo, index | skills/databases/SKILL.md |
-| web-frameworks | next.js, nextjs, nuxt, remix, vite config, ssr, app router | skills/web-frameworks/SKILL.md |
+| web-frameworks | next.js, nextjs, nuxt, remix, vite config, ssr, app router, setup framework, init nextjs, tailwind config | skills/web-frameworks/SKILL.md |
 
 ## Operations
 
@@ -35,8 +35,8 @@ Orchestrator reads this file to route tasks. Internal only. Do not expose as a u
 | Skill | Trigger keywords | Load path |
 |---|---|---|
 | test | test, vitest, jest, playwright, coverage, e2e, unit, integration, chạy test | skills/test/SKILL.md |
-| code-review | review, refactor, clean up, best practice, quality, maintainability | skills/code-review/SKILL.md |
-| ck-debug | bug, lỗi, error, không chạy, crash, failing, root cause | skills/ck-debug/SKILL.md |
+| code-review | review, refactor, clean up, best practice, quality, maintainability, improve, cải thiện code, code smell, technical debt | skills/code-review/SKILL.md |
+| ck-debug | bug, lỗi, error, không chạy, crash, failing, root cause, không chịu chạy, bấm gì cũng tắt, hay bị treo, app bị treo, đơ khi | skills/ck-debug/SKILL.md |
 | fix | fix, sửa, patch, broken, type error, lint error, failing test | skills/fix/SKILL.md |
 
 ## Project

@@ -53,8 +53,8 @@ const ROUTING_TABLE = [
   {
     skill: 'ck-debug',
     category: 'quality',
-    verbs: ['debug', 'tìm lỗi', 'investigate', 'diagnose', 'tìm root cause', 'tại sao', 'why', 'không chạy được', 'không chạy', 'investigate memory', 'app crash', 'không chạy được app'],
-    nouns: ['root cause', 'memory leak', 'không chạy được', 'không hiểu', 'app crash', 'crash khi bấm', 'crash khi', 'ci fail', 'lỗi', 'nguyên nhân', 'crash khi submit'],
+    verbs: ['debug', 'tìm lỗi', 'investigate', 'diagnose', 'tìm root cause', 'tại sao', 'why', 'không chạy được', 'không chạy', 'investigate memory', 'app crash', 'không chạy được app', 'không chịu chạy', 'bấm gì cũng tắt', 'hay bị treo', 'tự tắt', 'treo khi', 'đơ khi'],
+    nouns: ['root cause', 'memory leak', 'không chạy được', 'không hiểu', 'app crash', 'crash khi bấm', 'crash khi', 'ci fail', 'lỗi', 'nguyên nhân', 'crash khi submit', 'app bị treo', 'bấm không phản hồi', 'freeze khi'],
     secondary: ['fix', 'test'],
   },
   {
@@ -67,8 +67,8 @@ const ROUTING_TABLE = [
   {
     skill: 'code-review',
     category: 'quality',
-    verbs: ['review', 'kiểm tra code', 'audit code', 'check quality', 'check code', 'refactor', 'review code', 'review rồi'],
-    nouns: ['quality', 'best practice', 'maintainability', 'clean up', 'code quality'],
+    verbs: ['review', 'kiểm tra code', 'audit code', 'check quality', 'check code', 'refactor', 'review code', 'review rồi', 'improve', 'improve code', 'cải thiện code', 'tối ưu code'],
+    nouns: ['quality', 'best practice', 'maintainability', 'clean up', 'code quality', 'code smell', 'technical debt'],
     secondary: ['scout'],
   },
 
@@ -104,8 +104,8 @@ const ROUTING_TABLE = [
   {
     skill: 'web-frameworks',
     category: 'development',
-    verbs: ['setup next.js', 'config vite', 'migrate turborepo', 'setup app router', 'setup nextjs', 'migrate sang turborepo', 'config vite cho react', 'setup next.js app'],
-    nouns: ['next.js', 'nextjs', 'nuxt', 'remix', 'vite', 'ssr', 'app router', 'turborepo', 'react project', 'next.js app router'],
+    verbs: ['setup next.js', 'config vite', 'migrate turborepo', 'setup app router', 'setup nextjs', 'migrate sang turborepo', 'config vite cho react', 'setup next.js app', 'setup framework', 'init nextjs', 'create nextjs app'],
+    nouns: ['next.js', 'nextjs', 'nuxt', 'remix', 'vite', 'ssr', 'app router', 'turborepo', 'react project', 'next.js app router', 'tailwind config', 'framework config'],
     secondary: ['frontend-development'],
   },
 
@@ -299,7 +299,9 @@ function normalize(text) {
 function matchesKeywords(intentNorm, keywords) {
   const hits = [];
   for (const kw of keywords) {
-    if (intentNorm.includes(kw.toLowerCase())) {
+    // Normalize keyword the same way as intent (remove punctuation, lowercase)
+    const kwNorm = normalize(kw);
+    if (kwNorm && intentNorm.includes(kwNorm)) {
       hits.push(kw);
     }
   }
@@ -320,7 +322,9 @@ function detectVerb(intentNorm) {
   allVerbs.sort((a, b) => b.verb.length - a.verb.length);
 
   for (const { verb, skill } of allVerbs) {
-    if (intentNorm.includes(verb.toLowerCase())) {
+    // Normalize verb the same way as intent (remove punctuation, lowercase)
+    const verbNorm = normalize(verb);
+    if (verbNorm && intentNorm.includes(verbNorm)) {
       return { verb, skill };
     }
   }
