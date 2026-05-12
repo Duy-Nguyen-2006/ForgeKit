@@ -14,7 +14,7 @@
 ## Token Rules
 - ForgeCode native tools trước shell commands
 - `rtk` prefix khi RTK installed
-- Serena khi file > 200 lines hoặc cross-file task
+- GitNexus khi file > 200 lines hoặc cross-file task
 - Max 1 primary skill lúc đầu, secondary chỉ khi cần cụ thể
 - Không read toàn reference directory
 

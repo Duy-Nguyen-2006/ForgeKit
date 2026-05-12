@@ -30,7 +30,7 @@ ForgeKit/
 ├── agents/              # Subagent definitions
 ├── skills/              # Skill modules (mỗi cái có SKILL.md + references/)
 ├── hooks/               # Hook scripts (.cjs) + docs (.md)
-├── integrations/        # RTK, Serena, recommended-tools
+├── integrations/        # RTK, GitNexus, recommended-tools
 ├── communication/       # Output style rules
 ├── scripts/             # Generators, validators
 └── bin/                 # npm installer

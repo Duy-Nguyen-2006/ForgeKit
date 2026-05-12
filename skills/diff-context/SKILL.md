@@ -80,7 +80,7 @@ Cho mỗi changed file, tìm files phụ thuộc vào nó. Chi tiết tại `ref
 
 | Priority | Strategy | Khi nào dùng |
 |----------|----------|-------------|
-| 1 | Serena `find_referencing_symbols` | MCP có sẵn, codebase có LSP index |
+| 1 | GitNexus `impact` | MCP có sẵn, codebase có LSP index |
 | 2 | ast-grep AST reference search | Cần precise, có ast-grep installed |
 | 3 | ripgrep import/require tracing | Fallback universal, nhanh |
 | 4 | tree-sitter local symbol index | Cần offline symbol index |
@@ -142,7 +142,7 @@ Nếu vượt budget:
 ## Fallback khi không có git
 
 - Không có git repo → route sang `ck:context-engineering`
-- Không có Serena → dùng ripgrep (Step 3, strategy 3)
+- Không có GitNexus → dùng ripgrep (Step 3, strategy 3)
 - Không có diff (clean working tree) → check `git log -1` cho last commit, hoặc hỏi user
 
 ## So sánh với full-codebase approach

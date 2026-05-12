@@ -66,27 +66,27 @@ estimated_tokens = 1200 × 60 / 3 = 24,000 tokens
 
 Khi `estimated_tokens > threshold`, chạy fallback chain theo thứ tự:
 
-### Step 1: Downgrade sang Serena (nếu có)
+### Step 1: Downgrade sang GitNexus (nếu có)
 
-Nếu Serena MCP server available:
+Nếu GitNexus MCP server available:
 
 ```
-Thay read_file → Serena find_symbol
-Thay search_files → Serena get_symbols_overview
+Thay read_file → GitNexus context
+Thay search_files → GitNexus query
 ```
 
-**Serena `find_symbol`:**
+**GitNexus `context`:**
 - Chỉ trả về signature + location, không trả body
 - ~50-200 tokens per symbol
 - Phù hợp orient phase
 
-**Serena `get_symbols_overview`:**
+**GitNexus `query`:**
 - Trả về danh sách tất cả symbols trong file
 - ~100-500 tokens per file
 - Phù hợp khi cần hiểu cấu trúc file
 
-**Khi nào dùng Serena:**
-- ✅ Có MCP server Serena
+**Khi nào dùng GitNexus:**
+- ✅ Có MCP server GitNexus
 - ✅ Chỉ cần hiểu cấu trúc / tìm symbol
 - ✅ Không cần đọc implementation chi tiết
 - ❌ Cần đọc exact code để edit
@@ -94,7 +94,7 @@ Thay search_files → Serena get_symbols_overview
 
 ### Step 2: Chunked read
 
-Nếu Serena không available hoặc cần đọc actual code:
+Nếu GitNexus không available hoặc cần đọc actual code:
 
 ```
 Thay read_file(path, full) → read_file(path, offset, limit)
@@ -137,11 +137,11 @@ Nếu bắt buộc phải đọc toàn bộ (user yêu cầu, hoặc đang debug
    File: {path} ({lines} dòng)
 
    Gợi ý:
-   - Dùng Serena find_symbol nếu chỉ cần tìm symbol
+   - Dùng GitNexus context nếu chỉ cần tìm symbol
    - Dùng chunked read để đọc từng phần
    - Confirm để đọc toàn bộ (sẽ tốn {N} tokens)
 
-   [Y] Đọc toàn bộ  [S] Serena  [C] Chunked read
+   [Y] Đọc toàn bộ  [S] GitNexus  [C] Chunked read
 ```
 
 **Warn chỉ hiện khi:**
@@ -187,8 +187,8 @@ max_read_lines = 500
 # Có tự động chunk hay warn
 auto_chunk = true
 
-# Có dùng Serena downgrade
-serena_downgrade = true
+# Có dùng GitNexus downgrade
+gitnexus_downgrade = true
 ```
 
 **Nếu `.forge.toml` không có section `[compact]`, dùng default values.**
@@ -211,9 +211,9 @@ Estimated: 800 × 60 / 4 = 12,000 tokens
 Threshold: 4,000 (orient)
 
 → ACTION: Downgrade
-  - Serena get_symbols_overview("src/api/handlers.ts")
+  - GitNexus query("src/api/handlers.ts")
   - Trả về: 15 symbols, ~300 tokens ✅
-  - Agent thấy cần handler cụ thể → find_symbol("createUser")
+  - Agent thấy cần handler cụ thể → context("createUser")
   - Trả về: signature + location, ~100 tokens ✅
 ```
 

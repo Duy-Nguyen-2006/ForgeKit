@@ -47,7 +47,7 @@ User confirms with any of the above → request is considered approved.
 5. Route using `skills/orchestrator/SKILL.md` only if route_intent returns `no-match`.
 6. Enforce `skills/token-efficiency/SKILL.md`.
 7. Use RTK for noisy shell if installed.
-8. Use Serena MCP for large codebase/symbol/refactor if installed.
+8. Use GitNexus MCP for large codebase/symbol/refactor if installed.
 9. Do not use context-mode or cavemem.
 10. Do NOT auto-load skills — use route_intent output only.
 11. Implement incrementally; test and verify each step.

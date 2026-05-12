@@ -50,7 +50,7 @@ Orchestrator reads this file to route tasks. Internal only. Do not expose as a u
 | watzup | watzup, status, project status, đang làm gì, tiến độ | skills/watzup/SKILL.md |
 | repomix | repomix, codebase summary, tóm tắt codebase, map project, sơ đồ project, luồng code | skills/repomix/SKILL.md |
 | repo-map | repo map, skeleton map, ranked signatures, repomap, orient codebase, tree-sitter map, PageRank code, sơ đồ repo, skeleton codebase, orient repo | skills/repo-map/SKILL.md |
-| code-map | code map, code2prompt, gitingest, map codebase, fallback summary, Serena unavailable, tóm tắt codebase, sơ đồ code | skills/code-map/SKILL.md |
+| code-map | code map, code2prompt, gitingest, map codebase, fallback summary, GitNexus unavailable, tóm tắt codebase, sơ đồ code | skills/code-map/SKILL.md |
 | project-organization | structure, folder, organize, refactor arch, layout | skills/project-organization/SKILL.md |
 | docs | tài liệu, README, docs, documentation, guide, changelog, viết tài liệu | skills/docs/SKILL.md |
 

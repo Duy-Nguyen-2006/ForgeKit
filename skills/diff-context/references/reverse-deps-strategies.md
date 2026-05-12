@@ -12,10 +12,10 @@ File-level nhanh nhưng coarse. Symbol-level chính xác nhưng cần tooling.
 
 ---
 
-## Strategy 1: Serena MCP `find_referencing_symbols`
+## Strategy 1: GitNexus MCP `impact`
 
 ### Khi nào dùng
-- Serena MCP available (check `mcp_serena__find_referencing_symbols` tồn tại)
+- GitNexus MCP available (check `mcp_gitnexus__impact` tồn tại)
 - Codebase có LSP index
 - Cần symbol-level precision
 
@@ -23,21 +23,21 @@ File-level nhanh nhưng coarse. Symbol-level chính xác nhưng cần tooling.
 
 ```
 # Tìm tất cả references đến một symbol
-mcp_serena__find_referencing_symbols(symbol_path)
+mcp_gitnexus__impact(symbol_path)
 
 # Ví dụ: tìm ai dùng loginHandler từ auth.ts
-mcp_serena__find_referencing_symbols("src/api/auth.ts:loginHandler")
+mcp_gitnexus__impact("src/api/auth.ts:loginHandler")
 ```
 
 ### Workflow
 
 1. Extract exported symbols từ changed files:
    ```
-   mcp_serena__get_symbols_overview(file_path)
+   mcp_gitnexus__query(file_path)
    ```
 2. Cho mỗi exported symbol, tìm references:
    ```
-   mcp_serena__find_referencing_symbols(symbol_path)
+   mcp_gitnexus__impact(symbol_path)
    ```
 3. Collect unique file paths từ references
 
@@ -47,12 +47,12 @@ mcp_serena__find_referencing_symbols("src/api/auth.ts:loginHandler")
 - **Type-aware**: Hiểu type aliases, re-exports
 
 ### Nhược điểm
-- Cần Serena MCP setup
+- Cần GitNexus MCP setup
 - LSP indexing có thể chậm lần đầu
 - Một số edge cases (dynamic imports, reflection) không detect được
 
 ### Fallback signal
-Nếu `mcp_serena__find_referencing_symbols` timeout hoặc error → chuyển Strategy 3.
+Nếu `mcp_gitnexus__impact` timeout hoặc error → chuyển Strategy 3.
 
 ---
 
@@ -60,7 +60,7 @@ Nếu `mcp_serena__find_referencing_symbols` timeout hoặc error → chuyển S
 
 ### Khi nào dùng
 - ast-grep (`sg`) installed
-- Cần precise search mà Serena không available
+- Cần precise search mà GitNexus không available
 - Codebase chủ yếu là JS/TS/Python/Rust
 
 ### Cách dùng
@@ -132,7 +132,7 @@ go_import: 'import "$MODULE"'
 
 ### Khi nào dùng
 - **Universal fallback** — luôn available
-- Serena và ast-grep không có
+- GitNexus và ast-grep không có
 - Cần nhanh, chấp nhận chút noise
 
 ### Cách dùng
@@ -303,8 +303,8 @@ def find_references(symbol_name, file_path, language):
 ## Strategy Selection Decision Tree
 
 ```
-Có Serena MCP?
-├── Yes → Strategy 1 (Serena)
+Có GitNexus MCP?
+├── Yes → Strategy 1 (GitNexus)
 │   └── Timeout/Error?
 │       └── Có ast-grep?
 │           ├── Yes → Strategy 2 (ast-grep)

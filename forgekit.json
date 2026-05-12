@@ -48,7 +48,7 @@
   },
   "integrations": {
     "rtk": "integrations/rtk.md",
-    "serena": "integrations/serena.md",
+    "gitnexus": "integrations/gitnexus.md",
     "contextMode": false,
     "cavemem": false
   },
@@ -102,6 +102,7 @@
     "autonomousAfterApproval": true,
     "verifyBeforeFinalReport": true,
     "forgeCodeNativeFirst": true,
+    "autoEnableCaveman": true,
     "maxPrimarySkillsInitial": 1
   }
 }

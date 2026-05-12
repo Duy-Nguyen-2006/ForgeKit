@@ -95,10 +95,10 @@ All notable changes to ForgeKit are documented in this file. Format follows [Kee
 
 ### Added
 
-- Fixed Serena MCP tool names (find_symbol, find_referencing_symbols, get_symbols_overview, search_for_pattern).
+- Fixed GitNexus MCP tool names (context, impact, query, search_for_pattern).
 - `repo-map` skill (Aider repomap pattern, tree-sitter PageRank ranking).
 - `diff-context` skill (Continue.dev @diff pattern, git diff + reverse deps).
-- `code-map` skill (code2prompt/gitingest fallback when Serena unavailable).
+- `code-map` skill (code2prompt/gitingest fallback when GitNexus unavailable).
 - AST-grep wrapper in `scout` skill (semantic AST search).
 - `.forgeignore` with comprehensive ignore patterns.
 - `intent-classifier` with 60+ few-shot examples and confidence scoring.
@@ -115,7 +115,7 @@ All notable changes to ForgeKit are documented in this file. Format follows [Kee
 ### Added
 
 - Rebuilt ForgeKit as a ForgeCode-native, `:ck:auto`-first assistant kit.
-- Skill registry routing, context-engineering, non-tech UX skills, RTK/Serena setup, and hooks.
+- Skill registry routing, context-engineering, non-tech UX skills, RTK/GitNexus setup, and hooks.
 - Optional privacy, notifications, and session-start hook documentation.
 - README quickstart, demo flow, and copyable request templates.
 

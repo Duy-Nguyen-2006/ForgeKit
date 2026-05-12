@@ -33,6 +33,7 @@
     "route:coverage": "node scripts/route-status.cjs --coverage",
     "test:mcp": "node mcp-server/index.cjs --test",
     "test:installer": "node bin/lgmmo-forgekit-installer.js --help",
+    "test:forgecode": "node scripts/validate-forgecode-compat.cjs",
     "lint": "node scripts/validate-forgekit.cjs && node scripts/validate-registry.cjs && node scripts/validate-skills.cjs"
   },
   "keywords": [

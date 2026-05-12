@@ -31,6 +31,7 @@ assert.strictEqual(config.nativeRuntimeDir, '.forge');
 assert.deepStrictEqual(config.entrypoints, [':ck:auto']);
 assert.strictEqual(config.behavior.specFirst, true);
 assert.strictEqual(config.behavior.forgeCodeNativeFirst, true);
+assert.strictEqual(config.behavior.autoEnableCaveman, true);
 assert.strictEqual(config.integrations.contextMode, false);
 assert.strictEqual(config.integrations.cavemem, false);
 
@@ -38,7 +39,7 @@ const command = fs.readFileSync(commandPath, 'utf8');
 assert.ok(command.includes(':ck:auto'), 'ForgeCode command must use colon syntax');
 assert.ok(!command.includes('Use `/ck:auto`'), 'ForgeCode native docs must not advertise slash syntax');
 assert.ok(command.includes('ForgeCode native tools first'), 'command should prioritize ForgeCode native tools');
-assert.ok(command.includes('Serena MCP'), 'command should mention Serena MCP');
+assert.ok(command.includes('GitNexus MCP'), 'command should mention GitNexus MCP');
 assert.ok(command.includes('RTK'), 'command should mention RTK');
 
 // v2.1.0 additions — verify generator copied new files into .forge/ output

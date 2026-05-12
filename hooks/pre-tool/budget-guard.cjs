@@ -60,7 +60,7 @@ function run() {
     // Significant overshoot — block with suggestion
     process.stderr.write(
       `[budget-guard] Estimated ${estimatedTokens} tokens (cap: ${cap}). ` +
-      `Suggestion: use Serena find_symbol, chunked read, or narrow scope.\n`
+      `Suggestion: use GitNexus query/context, chunked read, or narrow scope.\n`
     );
     process.exit(2);
   }
@@ -69,7 +69,7 @@ function run() {
     // Mild overshoot — warn but allow
     process.stderr.write(
       `[budget-guard] Estimated ${estimatedTokens} tokens (cap: ${cap}). ` +
-      `Consider using Serena or chunked read.\n`
+      `Consider using GitNexus or chunked read.\n`
     );
     // Exit 0 = allow, but warning is logged
   }

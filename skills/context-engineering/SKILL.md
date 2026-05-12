@@ -19,17 +19,17 @@ examples: ["find where User model is defined", "tìm tất cả chỗ gọi func
 
 ## Quy trình (ưu tiên từ trên xuống)
 
-### Nếu Serena MCP có:
+### Nếu GitNexus MCP có:
 
-1. `find_symbol` tên cần tìm (lookup symbol definition)
-2. `find_referencing_symbols` nếu cần cross-file references
-3. `get_symbols_overview` nếu cần map toàn bộ overview
-4. `search_for_pattern` nếu cần regex/semantic search
+1. `context` với symbol name hoặc UID để xem definition/callers/callees
+2. `impact` hoặc `context` nếu cần cross-file references
+3. `query` nếu cần map overview theo concept/process
+4. native `fs_search` nếu cần regex search
 5. Đọc chính xác file được trỏ đến — không đọc gì thêm
 
-> **Ghi chú:** Tên tool không bao gồm prefix `mcp__serena__` — runtime tự thêm khi gọi MCP server.
+> **Ghi chú:** Tên tool không bao gồm prefix `mcp__gitnexus__` — runtime tự thêm khi gọi MCP server.
 
-### Nếu không có Serena:
+### Nếu không có GitNexus:
 
 1. `fs_search` pattern ở entry points (index, main, app, config)
 2. `read` tối đa 5 files để orient

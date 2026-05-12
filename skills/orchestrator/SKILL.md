@@ -36,22 +36,22 @@ Before routing, read `skills/registry.md` and choose the single best matching pr
 | deploy/publish/hosting | `deploy` | `security-scan` before production |
 | commit/push/PR | `git` | `code-review` before commit |
 | privacy/notifications/session hooks | hooks-runtime | hooks/<type>/HOOK.md |
-| large repo/refactor/symbol/find references | `context-engineering` | Serena MCP nếu có, `scout` nếu không |
+| large repo/refactor/symbol/find references | `context-engineering` | GitNexus MCP nếu có, `scout` nếu không |
 | repo skeleton/orient unfamiliar codebase | `repo-map` | `context-engineering` if specific symbol needed |
 | fix/refactor only changed files | `diff-context` | `fix` or `ck-debug` as primary |
-| codebase summary without Serena | `code-map` | `repomix` for full summary |
+| codebase summary without GitNexus | `code-map` | `repomix` for full summary |
 | noisy shell/test/build/log/diff | RTK if installed | native shell fallback |
 
-## Serena MCP Use
+## GitNexus MCP Use
 
-Use Serena when any condition holds:
+Use GitNexus when any condition holds:
 
 - repo is large or unfamiliar
 - task asks refactor/rename/find usages
 - symbol-level context needed
 - cross-file impact unclear
 
-Do not use Serena for 1-file obvious edits.
+Do not use GitNexus for 1-file obvious edits.
 
 ## RTK Use
 

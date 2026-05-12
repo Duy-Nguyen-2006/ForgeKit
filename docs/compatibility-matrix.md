@@ -16,7 +16,7 @@ Bảng hỗ trợ các runtime khác nhau. ForgeCode là primary; Codex và Clau
 | Budget guard hook | ✅ Runtime .cjs | ❌ Not supported | ❌ Not supported |
 | Session init hook | ✅ Runtime .cjs | ❌ Not supported | ❌ Not supported |
 | Notifications hook | ✅ Runtime .cjs | ❌ Not supported | ❌ Not supported |
-| Serena MCP | ✅ Recommended | ❌ Not available | ❌ Not available |
+| GitNexus MCP | ✅ Recommended | ❌ Not available | ❌ Not available |
 | RTK integration | ✅ Recommended | ❌ Not available | ❌ Not available |
 | Repo map / Diff context | ✅ Full | ✅ Via skill | ✅ Via skill |
 | Domain skills (6) | ✅ Full | ✅ Via skill | ✅ Via skill |
@@ -35,7 +35,7 @@ Bảng hỗ trợ các runtime khác nhau. ForgeCode là primary; Codex và Clau
 1. **ForgeCode-native first**: every feature works in ForgeCode first.
 2. **Codex/Claude**: compatibility exports provide core workflow (`:ck:auto` → spec → orchestrator → skills → verify → report).
 3. **Hooks**: runtime hooks (`.cjs`) are ForgeCode-only. Codex/Claude don't support hook execution.
-4. **MCP integrations** (Serena, RTK): require runtime support, available in ForgeCode only.
+4. **MCP integrations** (GitNexus, RTK): require runtime support, available in ForgeCode only.
 
 ## Skill Availability
 

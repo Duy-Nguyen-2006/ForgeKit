@@ -49,7 +49,7 @@ sg -p 'use$NAME($$$)' -l tsx                       # Find hook usage
 **Decision tree:**
 - Literal text search (error messages, strings, config) → `ripgrep`
 - Structural code search (definitions, patterns, idioms) → `ast-grep`
-- Symbol references across codebase → Serena MCP (if available), else hybrid
+- Symbol references across codebase → GitNexus MCP (if available), else hybrid
 - Need both text AND structure → hybrid ripgrep + ast-grep
 
 👉 Full guide: `references/ast-grep-scouting.md`

@@ -55,7 +55,7 @@ build
 GoogleService-Info.plist
 
 repomix-output.xml
-.serena/cache
+.gitnexus/cache
 plans/**/*
 !plans/templates/*
 screenshots/*

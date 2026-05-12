@@ -39,11 +39,15 @@ assert.strictEqual(manifest.behavior.specFirst, true);
 assert.strictEqual(manifest.behavior.singleApprovalGate, true);
 assert.strictEqual(manifest.behavior.autonomousAfterApproval, true);
 assert.strictEqual(manifest.behavior.verifyBeforeFinalReport, true);
+assert.strictEqual(manifest.behavior.autoEnableCaveman, true);
 assert.strictEqual(manifest.integrations.contextMode, false);
 assert.strictEqual(manifest.integrations.cavemem, false);
 
 assert.ok(orchestrator.includes('ForgeCode native tools first'), 'orchestrator must prioritize ForgeCode native tools');
-assert.ok(orchestrator.includes('Serena'), 'orchestrator must include Serena routing');
+assert.ok(orchestrator.includes('GitNexus'), 'orchestrator must include GitNexus routing');
+assert.ok(tokenEfficiency.includes('GitNexus'), 'token policy must include GitNexus');
+assert.ok(manifest.integrations.gitnexus, 'manifest must include GitNexus integration');
+assert.ok(!manifest.integrations.serena, 'manifest must not include legacy MCP integration');
 assert.ok(orchestrator.includes('RTK'), 'orchestrator must include RTK routing');
 assert.ok(tokenEfficiency.includes('Start with max 1 primary skill'), 'token policy must limit initial skill loading');
 assert.ok(tokenEfficiency.includes('context-mode: disabled'), 'token policy must disable context-mode');

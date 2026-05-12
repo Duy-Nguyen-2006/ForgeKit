@@ -10,13 +10,13 @@ triggers:
   - tóm tắt codebase
   - sơ đồ code
 non_triggers:
-  - serena
+  - gitnexus
   - symbol search
   - read file
 examples:
   - "xem sơ đồ codebase"
   - "map code flow trong project"
-  - "tóm tắt codebase cho AI context khi không có Serena"
+  - "tóm tắt codebase cho AI context khi không có GitNexus"
 metadata:
   author: forgekit
   version: "1.0.0"
@@ -24,19 +24,19 @@ metadata:
 
 # Code Map
 
-Token-bounded codebase summarization — fallback khi Serena MCP không available.
+Token-bounded codebase summarization — fallback khi GitNexus MCP không available.
 
 ## Trigger
 
 - "map codebase", "code map", "tóm tắt repo", "codebase overview"
 - "code2prompt", "gitingest"
 - Cần hiểu nhanh project structure mà không muốn đọc từng file
-- Serena MCP không available hoặc chưa cài
+- GitNexus MCP không available hoặc chưa cài
 - Orchestrator cần context overview trước khi route task
 
 ## Khi nào KHÔNG dùng
 
-- Serena MCP available → dùng `get_symbols_overview` + `find_symbol` (chính xác hơn)
+- GitNexus MCP available → dùng `query` + `context` (chính xác hơn)
 - Chỉ cần đọc 1-2 file cụ thể → dùng native read
 - Đã có `docs/codebase-summary.md` mới (từ repomix) → đọc file đó thay vì generate lại
 
@@ -110,8 +110,8 @@ coverage
 ## Tool Selection Decision Tree
 
 ```
-Serena MCP available?
-├─ YES → use Serena (get_symbols_overview, find_symbol)
+GitNexus MCP available?
+├─ YES → use GitNexus (query, context)
 └─ NO → code2prompt available?
          ├─ YES → code2prompt with template
          └─ NO → gitingest available?

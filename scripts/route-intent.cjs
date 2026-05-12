@@ -113,8 +113,8 @@ const ROUTING_TABLE = [
   {
     skill: 'deploy',
     category: 'operations',
-    verbs: ['deploy', 'publish', 'ship', 'đưa lên', 'đẩy lên server', 'host', 'deploy lên', 'publish package', 'setup ci/cd', 'setup ci', 'deploy và', 'config docker'],
-    nouns: ['hosting', 'ci/cd', 'ci', 'cd', 'docker', 'production', 'vercel', 'netlify', 'railway', 'flyio', 'aws', 'gcp', 'npm', 'server', 'docker cho production'],
+    verbs: ['deploy', 'publish', 'ship', 'đưa lên', 'đẩy lên server', 'host', 'deploy lên', 'publish package', 'setup ci/cd', 'setup ci', 'deploy và', 'deploy và scan', 'config docker'],
+    nouns: ['hosting', 'ci/cd', 'ci', 'cd', 'docker', 'production', 'vercel', 'netlify', 'railway', 'flyio', 'aws', 'gcp', 'npm', 'server', 'security', 'docker cho production'],
     secondary: ['security-scan'],
   },
   {
@@ -229,7 +229,7 @@ const ROUTING_TABLE = [
   {
     skill: 'web-testing',
     category: 'domain',
-    verbs: ['viết e2e test', 'browser test', 'visual regression test', 'setup cypress', 'write playwright', 'thêm e2e test', 'setup cypress cho', 'add e2e test cho', 'setup playwright', 'thêm playwright', 'agent browser test', 'setup agent-browser'],
+    verbs: ['viết e2e test', 'browser test', 'visual regression test', 'setup cypress', 'write playwright', 'thêm e2e test', 'setup cypress cho', 'setup playwright', 'thêm playwright', 'agent browser test', 'setup agent-browser'],
     nouns: ['playwright', 'cypress', 'e2e test', 'browser test', 'visual regression', 'test trên browser', 'e2e test cho', 'playwright tests', 'playwright tests for', 'cypress cho', 'playwright test', 'agent-browser', 'agent browser'],
     secondary: [],
   },

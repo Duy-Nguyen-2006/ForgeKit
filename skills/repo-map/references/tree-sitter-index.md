@@ -7,7 +7,7 @@ Cách xây dựng local symbol index bằng tree-sitter-cli hoặc ts-morph, cac
 Khi agent cần hiểu codebase, nó thường đọc toàn bộ file → tốn nhiều tokens. Symbol index cho phép:
 
 1. **Lookup nhanh** — tìm symbol location mà không cần đọc file
-2. **Offline** — không cần Serena MCP server hay LSP
+2. **Offline** — không cần GitNexus MCP server hay LSP
 3. **Faster** — index local, read JSON cache thay vì parse lại
 4. **Cheaper** — giảm token usage ≥60% cho orient phase
 
@@ -16,14 +16,14 @@ Khi agent cần hiểu codebase, nó thường đọc toàn bộ file → tốn 
 | Method | Tokens để tìm 1 symbol | Prerequisites |
 |---|---|---|
 | Đọc toàn bộ file | 5,000-50,000 | None |
-| Serena find_symbol | 100-500 | MCP server |
+| GitNexus context | 100-500 | MCP server |
 | Local symbol index | 50-200 | Cache file |
 
-**Khi nào dùng local index vs Serena:**
+**Khi nào dùng local index vs GitNexus:**
 - Small projects (< 500 files): local index nhanh hơn, không cần MCP
 - Offline / no MCP: local index là duy nhất option
-- Large monorepo (> 500 files): Serena có thể tốt hơn (server-side indexing)
-- Best: dùng cả hai — local index cho fallback, Serena cho precision
+- Large monorepo (> 500 files): GitNexus có thể tốt hơn (server-side indexing)
+- Best: dùng cả hai — local index cho fallback, GitNexus cho precision
 
 ## Option 1: tree-sitter-cli
 
@@ -505,7 +505,7 @@ def rebuild_partial(index, changed_files):
 ### Lookup từ cache
 
 ```python
-def find_symbol(name: str, kind: str = None):
+def context(name: str, kind: str = None):
     index = load_symbol_index()
     if not index:
         return None
@@ -524,7 +524,7 @@ def find_symbol(name: str, kind: str = None):
     return results
 
 # Usage:
-# find_symbol("AuthService") → [{ file: "src/auth/service.ts", name: "AuthService", kind: "class", line: 2 }]
+# context("AuthService") → [{ file: "src/auth/service.ts", name: "AuthService", kind: "class", line: 2 }]
 ```
 
 ## Method Selection Guide
@@ -572,13 +572,13 @@ Context-engineering skill dùng symbol index để:
 1. **Quick lookup** — khi agent cần tìm symbol, query index thay vì đọc file
 2. **Dependency resolution** — biết symbol ở đâu, đọc đúng file + line range
 3. **Smart context assembly** — include chỉ symbols liên quan vào context
-4. **Budget guard integration** — khi budget guard cần find_symbol, dùng local index trước, Serena sau
+4. **Budget guard integration** — khi budget guard cần context, dùng local index trước, GitNexus sau
 
 ```
 budget-guard fallback chain (updated):
-  1. Local symbol index → find_symbol(name)
-  2. Serena find_symbol (if MCP available)
-  3. Serena get_symbols_overview
+  1. Local symbol index → context(name)
+  2. GitNexus context (if MCP available)
+  3. GitNexus query
   4. Chunked file read
   5. Warn user
 ```

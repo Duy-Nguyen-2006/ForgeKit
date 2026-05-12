@@ -5,9 +5,10 @@
       "args": ["mcp-server/index.cjs"],
       "description": "ForgeKit Runtime Router — deterministic intent-to-skill routing. Exposes route_intent (MANDATORY first tool), route_status, route_log."
     },
-    "serena": {
+    "gitnexus": {
       "command": "npx",
-      "args": ["-y", "@oraios/serena", "--project-root", "."]
+      "args": ["-y", "gitnexus@rc", "mcp"],
+      "description": "GitNexus graph-powered code intelligence. Query indexed repositories via MCP."
     }
   }
 }

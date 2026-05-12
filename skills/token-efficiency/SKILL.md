@@ -39,8 +39,8 @@ Goal: preserve skill quality while minimizing default context.
 
 1. Start with targeted `fs_search` for filenames, symbols, scripts, errors.
 2. Read only relevant files and line ranges.
-3. Use Serena MCP for large codebases, symbol lookup, references, safe refactors.
-4. Use `scout` only when targeted search and Serena are insufficient/unavailable.
+3. Use GitNexus MCP for large codebases, symbol lookup, references, safe refactors.
+4. Use `scout` only when targeted search and GitNexus are insufficient/unavailable.
 5. Summarize findings before expanding scope.
 
 ## Shell Policy
@@ -66,7 +66,7 @@ Escalate context only in this order:
 3. package/framework docs/scripts
 4. primary skill `SKILL.md`
 5. selected reference file
-6. Serena MCP or scout
+6. GitNexus MCP or scout
 7. secondary skill
 
 ## Disabled

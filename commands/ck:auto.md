@@ -106,7 +106,7 @@ echo '{"intent":"<user intent>","primary":"<result>","secondary":<result>,"confi
 - Do NOT auto-load skills based on keyword matching — use route_intent output only.
 - Do not read full reference directories.
 - Use RTK for noisy shell output if installed.
-- Use Serena MCP for large repos, symbols, references, refactors if installed.
+- Use GitNexus MCP for large repos, symbols, references, refactors if installed.
 - Do not use context-mode in this kit.
 - Use concise Vietnamese; keep code/path/command exact.
 

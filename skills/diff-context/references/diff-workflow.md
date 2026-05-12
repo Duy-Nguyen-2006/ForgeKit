@@ -158,9 +158,9 @@ Chi tiết strategies tại `reverse-deps-strategies.md`.
 
 Cho mỗi changed file, cần trả lời: **"Ai dùng file/symbol này?"**
 
-**Với Serena MCP (preferred):**
+**Với GitNexus MCP (preferred):**
 ```
-mcp_serena__find_referencing_symbols(symbol_path)
+mcp_gitnexus__impact(symbol_path)
 ```
 
 **Với ripgrep (fallback):**
@@ -192,7 +192,7 @@ cat path/to/changed-file.ts
 
 **Reverse dep files:** Chỉ load phần liên quan.
 
-Với Serena:
+Với GitNexus:
 - `get_file_symbol_info` → lấy symbol positions
 - Đọc range quanh symbol reference
 

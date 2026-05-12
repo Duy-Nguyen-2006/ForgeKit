@@ -34,7 +34,7 @@ Không cần cấu hình gì thêm.
 Budget guard hook bật mặc định. Nó chạy trước mỗi tool call liên quan đến đọc dữ liệu và ngăn agent tiêu quá nhiều token trong một call.
 
 Nếu tool call sắp đọc vượt ngưỡng (default: 8000 tokens), hook tự động:
-1. Downgrade sang Serena `find_symbol` / `get_symbols_overview` nếu có
+1. Downgrade sang GitNexus `query` / `context` nếu có
 2. Chia file thành chunk nhỏ (read với offset+limit)
 3. Cảnh báo nếu vẫn cần đọc toàn bộ
 

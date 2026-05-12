@@ -218,7 +218,7 @@ sg -p 'class $NAME { $$$ }' -l ts $(rg -l 'DatabaseConnection' --type ts)
 
 ---
 
-## Decision Tree: ast-grep vs ripgrep vs Serena
+## Decision Tree: ast-grep vs ripgrep vs GitNexus
 
 ```
 What are you searching for?
@@ -230,18 +230,18 @@ What are you searching for?
 │  └─ → ast-grep (sg) — structural, formatting-immune
 │
 ├─ Symbol references across codebase (find all usages of X)
-│  ├─ Serena MCP available?
-│  │  └─ → Serena — best for symbol-level semantic search
-│  └─ No Serena
+│  ├─ GitNexus MCP available?
+│  │  └─ → GitNexus — best for symbol-level semantic search
+│  └─ No GitNexus
 │     └─ → ast-grep for definitions + ripgrep for references
 │
 ├─ Need both text AND structure?
 │  └─ → Hybrid: ripgrep for narrowing, ast-grep for structure
 │
 └─ Complex multi-hop query (call chain, data flow)
-   ├─ Serena MCP available?
-   │  └─ → Serena — built for this
-   └─ No Serena
+   ├─ GitNexus MCP available?
+   │  └─ → GitNexus — built for this
+   └─ No GitNexus
       └─ → ast-grep to map definitions, then manual tracing
 ```
 
@@ -254,7 +254,7 @@ What are you searching for?
 | All usages of `useAuth` hook | `rg` + `sg` | `rg 'useAuth' --type tsx` then `sg -p 'use$NAME($$$)' -l tsx` |
 | Class extending `BaseService` | `sg` | `sg -p 'class $NAME extends BaseService { $$$ }' -l ts` |
 | Files with TODO near async code | Hybrid | `rg 'TODO'` then `sg -p 'async function $NAME($$$) { $$$ }'` |
-| All references to symbol `UserModel` | Serena | `symbol_references("UserModel")` |
+| All references to symbol `UserModel` | GitNexus | `impact(target: "UserModel", direction: "upstream")` |
 
 ---
 

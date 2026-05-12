@@ -52,7 +52,7 @@ ForgeKit: reports changed files + how to test
 - Token-efficient skill loading.
 - Non-technical user experience.
 - Optional adapters for Codex and Claude.
-- Optional RTK and Serena MCP integration.
+- Optional RTK and GitNexus MCP integration.
 
 ## Setup
 

@@ -27,6 +27,12 @@ jobs:
       - name: Run tests
         run: npm test
 
+      - name: Run routing tests
+        run: npm run test:routing
+
+      - name: Validate ForgeCode compatibility
+        run: npm run test:forgecode
+
       - name: Run lint
         run: npm run lint
 
