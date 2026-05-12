@@ -60,7 +60,7 @@ Orchestrator reads this file to route tasks. Internal only. Do not expose as a u
 |---|---|---|
 | auth | login, signup, jwt, session, oauth, đăng nhập, đăng ký, authentication, authorization, rbac | skills/auth/SKILL.md |
 | payment-integration | stripe, paypal, momo, vnpay, checkout, subscription, thanh toán, payment, billing | skills/payment-integration/SKILL.md |
-| web-testing | playwright, cypress, e2e, browser test, smoke test UI, visual regression | skills/web-testing/SKILL.md |
+| web-testing | playwright, cypress, e2e, browser test, smoke test UI, visual regression, agent-browser, agent browser, browser chat | skills/web-testing/SKILL.md |
 | ai-multimodal | openai, anthropic, gemini, image generation, vision, transcribe, embedding, chatbot, AI integration | skills/ai-multimodal/SKILL.md |
 | document-processing | pdf, docx, xlsx, pptx, parse document, extract text, generate report | skills/document-processing/SKILL.md |
-| browser-automation | scrape, crawl, headless, automate browser, screenshot, puppeteer, data extraction | skills/browser-automation/SKILL.md |
+| browser-automation | scrape, crawl, headless, automate browser, screenshot, puppeteer, data extraction, agent-browser, agent browser, snapshot, accessibility tree | skills/browser-automation/SKILL.md |

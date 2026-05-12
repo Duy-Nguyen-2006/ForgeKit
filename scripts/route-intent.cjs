@@ -46,15 +46,15 @@ const ROUTING_TABLE = [
   {
     skill: 'fix',
     category: 'quality',
-    verbs: ['fix', 'sửa', 'khắc phục', 'resolve', 'patch', 'sửa nhanh', 'quick fix', 'sửa hết', 'sửa lỗi'],
+    verbs: ['fix', 'sửa', 'khắc phục', 'resolve', 'patch', 'sửa nhanh', 'quick fix', 'sửa hết', 'sửa lỗi', 'sửa lỗi crash', 'sửa lỗi typeerror', 'sửa lỗi bug'],
     nouns: ['broken', 'type error', 'lint error', 'failing test', 'lỗi', 'typeerror', 'crash khi', 'error', 'type error khi build', 'bug', 'ui bug'],
     secondary: ['ck-debug', 'test'],
   },
   {
     skill: 'ck-debug',
     category: 'quality',
-    verbs: ['debug', 'tìm lỗi', 'investigate', 'diagnose', 'tìm root cause', 'tại sao', 'why', 'không chạy được', 'không chạy', 'investigate memory', 'app crash', 'không chạy được app', 'không chịu chạy', 'bấm gì cũng tắt', 'hay bị treo', 'tự tắt', 'treo khi', 'đơ khi'],
-    nouns: ['root cause', 'memory leak', 'không chạy được', 'không hiểu', 'app crash', 'crash khi bấm', 'crash khi', 'ci fail', 'lỗi', 'nguyên nhân', 'crash khi submit', 'app bị treo', 'bấm không phản hồi', 'freeze khi'],
+    verbs: ['debug', 'tìm lỗi', 'investigate', 'diagnose', 'tìm root cause', 'tại sao', 'why', 'không chạy được', 'không chạy', 'investigate memory', 'app crash', 'không chạy được app', 'không chịu chạy', 'bấm gì cũng tắt', 'hay bị treo', 'tự tắt', 'treo khi', 'đơ khi', 'not working', 'not rendering', 'not responding', 'not re-rendering', 'infinite re-render', 're-rendering'],
+    nouns: ['root cause', 'memory leak', 'không chạy được', 'không hiểu', 'app crash', 'crash khi bấm', 'crash khi', 'ci fail', 'lỗi', 'nguyên nhân', 'crash khi submit', 'app bị treo', 'bấm không phản hồi', 'freeze khi', 'stale data', 'stale', 'not working', 'infinite loop', 'infinite re-render', 'freeze'],
     secondary: ['fix', 'test'],
   },
   {
@@ -67,8 +67,8 @@ const ROUTING_TABLE = [
   {
     skill: 'code-review',
     category: 'quality',
-    verbs: ['review', 'kiểm tra code', 'audit code', 'check quality', 'check code', 'refactor', 'review code', 'review rồi', 'improve', 'improve code', 'cải thiện code', 'tối ưu code'],
-    nouns: ['quality', 'best practice', 'maintainability', 'clean up', 'code quality', 'code smell', 'technical debt'],
+    verbs: ['review', 'kiểm tra code', 'audit code', 'check quality', 'check code', 'refactor', 'review code', 'review rồi', 'improve', 'improve code', 'cải thiện code', 'tối ưu code', 'tối ưu performance', 'optimize performance'],
+    nouns: ['quality', 'best practice', 'maintainability', 'clean up', 'code quality', 'code smell', 'technical debt', 'performance', 'chạy chậm', 'bundle size', 'slow', 'optimize', 'optimization'],
     secondary: ['scout'],
   },
 
@@ -76,8 +76,8 @@ const ROUTING_TABLE = [
   {
     skill: 'backend-development',
     category: 'development',
-    verbs: ['tạo api', 'add endpoint', 'implement service', 'viết middleware', 'setup websocket', 'implement rate', 'tạo rest api', 'tạo api endpoint', 'viết middleware validate'],
-    nouns: ['api', 'server', 'endpoint', 'middleware', 'service', 'rate limiting', 'rest api', 'crud', 'backend', 'request body'],
+    verbs: ['tạo api', 'add endpoint', 'implement service', 'viết middleware', 'setup websocket', 'implement rate', 'tạo rest api', 'tạo api endpoint', 'viết middleware validate', 'thêm api route', 'tạo api route'],
+    nouns: ['api', 'server', 'endpoint', 'middleware', 'service', 'rate limiting', 'rest api', 'crud', 'backend', 'request body', 'api route', 'api routes', 'route handler'],
     secondary: ['databases', 'security-scan'],
   },
   {
@@ -199,8 +199,8 @@ const ROUTING_TABLE = [
   {
     skill: 'project-organization',
     category: 'project',
-    verbs: ['tổ chức lại', 'reorganize', 'restructure', 'tổ chức lại folder'],
-    nouns: ['structure', 'folder', 'organize', 'layout', 'folder structure'],
+    verbs: ['tổ chức lại', 'reorganize', 'restructure', 'tổ chức lại folder', 'refactor directory', 'refactor structure', 'refactor folder', 'tổ chức lại folder structure'],
+    nouns: ['structure', 'folder', 'organize', 'layout', 'folder structure', 'directory structure', 'project layout'],
     secondary: [],
   },
   {
@@ -229,8 +229,8 @@ const ROUTING_TABLE = [
   {
     skill: 'web-testing',
     category: 'domain',
-    verbs: ['viết e2e test', 'browser test', 'visual regression test', 'setup cypress', 'write playwright', 'thêm e2e test', 'setup cypress cho', 'add e2e test cho'],
-    nouns: ['playwright', 'cypress', 'e2e test', 'browser test', 'visual regression', 'test trên browser', 'e2e test cho', 'playwright tests', 'playwright tests for', 'cypress cho'],
+    verbs: ['viết e2e test', 'browser test', 'visual regression test', 'setup cypress', 'write playwright', 'thêm e2e test', 'setup cypress cho', 'add e2e test cho', 'setup playwright', 'thêm playwright', 'agent browser test', 'setup agent-browser'],
+    nouns: ['playwright', 'cypress', 'e2e test', 'browser test', 'visual regression', 'test trên browser', 'e2e test cho', 'playwright tests', 'playwright tests for', 'cypress cho', 'playwright test', 'agent-browser', 'agent browser'],
     secondary: [],
   },
   {
@@ -250,8 +250,8 @@ const ROUTING_TABLE = [
   {
     skill: 'browser-automation',
     category: 'domain',
-    verbs: ['scrape', 'crawl', 'cào dữ liệu', 'automate browser', 'crawl website', 'scrape product'],
-    nouns: ['headless', 'automate browser', 'data extraction', 'puppeteer', 'screenshot', 'take screenshots', 'extract links'],
+    verbs: ['scrape', 'crawl', 'cào dữ liệu', 'automate browser', 'crawl website', 'scrape product', 'agent browser', 'agent-browser scrape', 'agent-browser crawl'],
+    nouns: ['headless', 'automate browser', 'data extraction', 'puppeteer', 'screenshot', 'take screenshots', 'extract links', 'agent-browser', 'accessibility tree', 'snapshot browser'],
     secondary: [],
   },
 

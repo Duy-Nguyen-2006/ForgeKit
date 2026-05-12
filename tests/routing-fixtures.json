@@ -116,6 +116,16 @@
     { "id": 97, "intent": "Tích hợp AI", "expectedPrimary": "ai-multimodal", "expectedSecondary": ["backend-development"], "expectedMinConfidence": 0.60, "language": "vi" },
     { "id": 98, "intent": "Xử lý PDF", "expectedPrimary": "document-processing", "expectedMinConfidence": 0.60, "language": "vi" },
     { "id": 99, "intent": "Giải thích", "expectedPrimary": "coding-level", "expectedMinConfidence": 0.60, "language": "vi" },
-    { "id": 100, "intent": "Tổ chức lại", "expectedPrimary": "project-organization", "expectedMinConfidence": 0.50, "language": "vi" }
+    { "id": 100, "intent": "Tổ chức lại", "expectedPrimary": "project-organization", "expectedMinConfidence": 0.50, "language": "vi" },
+    { "id": 101, "intent": "Setup Playwright tests cho login và signup flows", "expectedPrimary": "web-testing", "expectedMinConfidence": 0.60, "language": "vi" },
+    { "id": 102, "intent": "Thêm API route /api/users trong Next.js app router", "expectedPrimary": "backend-development", "expectedSecondary": ["databases"], "expectedMinConfidence": 0.60, "language": "vi" },
+    { "id": 103, "intent": "The app router is not re-rendering, stale data shows up", "expectedPrimary": "ck-debug", "expectedMinConfidence": 0.50, "language": "en" },
+    { "id": 104, "intent": "Tối ưu performance, app chạy chậm, bundle size quá lớn", "expectedPrimary": "code-review", "expectedMinConfidence": 0.50, "language": "vi" },
+    { "id": 105, "intent": "Refactor directory structure cho Next.js 15", "expectedPrimary": "project-organization", "expectedMinConfidence": 0.50, "language": "vi" },
+    { "id": 106, "intent": "Sửa lỗi TypeError, app crash khi login", "expectedPrimary": "fix", "expectedMinConfidence": 0.60, "language": "vi" },
+    { "id": 107, "intent": "Setup agent-browser cho E2E test", "expectedPrimary": "web-testing", "expectedMinConfidence": 0.60, "language": "vi" },
+    { "id": 108, "intent": "Dùng agent-browser crawl data từ website", "expectedPrimary": "browser-automation", "expectedMinConfidence": 0.60, "language": "vi" },
+    { "id": 109, "intent": "Tạo API route handler cho POST /orders", "expectedPrimary": "backend-development", "expectedSecondary": ["databases"], "expectedMinConfidence": 0.60, "language": "vi" },
+    { "id": 110, "intent": "Infinite re-render khi dùng useEffect, component re-renders infinitely", "expectedPrimary": "ck-debug", "expectedMinConfidence": 0.50, "language": "en" }
   ]
 }

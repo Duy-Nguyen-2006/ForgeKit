@@ -1,6 +1,6 @@
 ---
 name: ck:browser-automation
-description: "Browser automation and web scraping"
+description: "Browser automation and web scraping with agent-browser, Playwright, or Puppeteer"
 auto_load: false
 triggers:
   - scrape
@@ -11,6 +11,10 @@ triggers:
   - web scraping
   - puppeteer
   - data extraction
+  - agent-browser
+  - agent browser
+  - snapshot
+  - accessibility tree
 non_triggers:
   - e2e test
   - unit test
@@ -19,14 +23,15 @@ examples:
   - "scrape product data từ website"
   - "automate browser để take screenshots"
   - "crawl website và extract links"
+  - "dùng agent-browser crawl data từ website"
 metadata:
   author: forgekit
-  version: "1.0.0"
+  version: "1.1.0"
 ---
 
 # Browser Automation
 
-Browser automation & web scraping — Playwright/Puppeteer. Tập trung scrape/crawl, không phải test.
+Browser automation & web scraping — agent-browser, Playwright, Puppeteer. Tập trung scrape/crawl, không phải test.
 
 ## Khi nào load
 
@@ -35,6 +40,7 @@ Browser automation & web scraping — Playwright/Puppeteer. Tập trung scrape/c
 - Screenshot automation
 - Form filling automation
 - Web monitoring
+- User yêu cầu agent-browser cho automation tasks
 
 ## Không dùng khi
 
@@ -42,7 +48,67 @@ Browser automation & web scraping — Playwright/Puppeteer. Tập trung scrape/c
 - Unit/integration test (→ test)
 - Chỉ cần HTTP API call (→ backend-development)
 
-## Playwright Pattern (Primary)
+## agent-browser Pattern (Primary for ForgeCode)
+
+agent-browser is a Rust-based headless browser automation CLI designed for AI agents. It's the **recommended primary tool** for browser automation in ForgeCode workflows because:
+
+1. **Accessibility tree snapshots** — Returns structured accessibility tree instead of raw DOM, far better for AI parsing and data extraction
+2. **CLI-native** — Natural fit for ForgeCode terminal environment, no Node.js runtime needed
+3. **Ref-based interaction** — Elements get refs (@e1, @e2) for precise, reliable interaction
+4. **Screenshot + eval** — Full screenshot and JavaScript evaluation support
+5. **Data extraction** — Extract structured data directly from accessibility tree
+
+### Basic Usage
+```bash
+# Navigate and get accessibility tree snapshot
+agent-browser navigate "https://example.com"
+agent-browser snapshot
+# Returns: accessibility tree with refs like @e1, @e2, @e3...
+
+# Extract data by interacting with elements
+agent-browser click @e5
+agent-browser type @e3 "search query"
+
+# Screenshot
+agent-browser screenshot --output page.png
+
+# JavaScript evaluation
+agent-browser eval "document.querySelectorAll('.item').length"
+
+# Natural language browser control
+agent-browser chat "Go to the products page and extract all product names"
+```
+
+### Scrape Pattern
+```bash
+#!/bin/bash
+# scrape-products.sh
+agent-browser navigate "https://shop.example.com/products"
+agent-browser snapshot
+# Parse accessibility tree output for structured data
+agent-browser eval "JSON.stringify(Array.from(document.querySelectorAll('.product')).map(el => ({name: el.querySelector('h2')?.textContent, price: el.querySelector('.price')?.textContent})))"
+```
+
+### Crawl Pattern
+```bash
+#!/bin/bash
+# crawl-links.sh
+agent-browser navigate "https://example.com"
+agent-browser eval "JSON.stringify(Array.from(document.querySelectorAll('a')).map(a => ({text: a.textContent, href: a.href})))"
+# Follow links using agent-browser navigate for each URL
+```
+
+### Why agent-browser for ForgeCode
+| Feature | agent-browser | Playwright | Puppeteer |
+|---|---|---|---|
+| Installation | Single binary | Node.js + browser | Node.js + Chrome |
+| Output | Accessibility tree (AI-native) | DOM/HTML | DOM/HTML |
+| CLI-native | Yes | No (library) | No (library) |
+| ForgeCode fit | Perfect (terminal-based) | Needs Node script | Needs Node script |
+| Ref selectors | @e1, @e2 | CSS/XPath | CSS/XPath |
+| Cloud browsers | Browserless, Browserbase | Browserless | Browserless |
+
+## Playwright Pattern
 
 ### Basic Scrape
 ```typescript
