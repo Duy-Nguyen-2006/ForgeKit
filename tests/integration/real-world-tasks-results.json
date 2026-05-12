@@ -1,0 +1,239 @@
+[
+  {
+    "repo": "facebook/react",
+    "task": "Fix lỗi TypeError ở file packages/react-reconciler/src/ReactFiberBeginWork.js khi build production",
+    "expected": "fix",
+    "got": "fix",
+    "secondary": [
+      "ck-debug",
+      "test"
+    ],
+    "confidence": 1,
+    "action": "route",
+    "ok": true
+  },
+  {
+    "repo": "microsoft/vscode",
+    "task": "Debug tại sao extension activation không chạy được trên Linux, tìm root cause",
+    "expected": "ck-debug",
+    "got": "ck-debug",
+    "secondary": [
+      "fix",
+      "test"
+    ],
+    "confidence": 1,
+    "action": "route",
+    "ok": true
+  },
+  {
+    "repo": "vercel/next.js",
+    "task": "Setup Next.js App Router cho example app trong examples/with-tailwindcss",
+    "expected": "web-frameworks",
+    "got": "web-frameworks",
+    "secondary": [
+      "frontend-development"
+    ],
+    "confidence": 1,
+    "action": "route",
+    "ok": true
+  },
+  {
+    "repo": "expressjs/express",
+    "task": "Tạo REST API endpoint POST /users với middleware validate request body",
+    "expected": "backend-development",
+    "got": "backend-development",
+    "secondary": [
+      "databases",
+      "security-scan"
+    ],
+    "confidence": 1,
+    "action": "route",
+    "ok": true
+  },
+  {
+    "repo": "prisma/prisma",
+    "task": "Tạo migration thêm bảng orders và add index trên user_id",
+    "expected": "databases",
+    "got": "databases",
+    "secondary": [
+      "backend-development"
+    ],
+    "confidence": 1,
+    "action": "route",
+    "ok": true
+  },
+  {
+    "repo": "stripe/stripe-node",
+    "task": "Thêm Stripe checkout flow cho monthly subscription recurring billing",
+    "expected": "payment-integration",
+    "got": "payment-integration",
+    "secondary": [
+      "backend-development"
+    ],
+    "confidence": 0.3,
+    "action": "disambiguate",
+    "ok": true
+  },
+  {
+    "repo": "jaredhanson/passport",
+    "task": "Implement OAuth login với Google, setup session management JWT",
+    "expected": "auth",
+    "got": "auth",
+    "secondary": [
+      "backend-development"
+    ],
+    "confidence": 1,
+    "action": "route",
+    "ok": true
+  },
+  {
+    "repo": "microsoft/playwright",
+    "task": "Viết playwright tests for login page tại tests/login.spec.ts",
+    "expected": "web-testing",
+    "got": "auth",
+    "secondary": [
+      "backend-development"
+    ],
+    "confidence": 0.6,
+    "action": "route-uncertain",
+    "ok": false
+  },
+  {
+    "repo": "shadcn-ui/ui",
+    "task": "Tạo React component dropdown với dark mode support",
+    "expected": "frontend-development",
+    "got": "frontend-development",
+    "secondary": [
+      "ui-ux-pro-max"
+    ],
+    "confidence": 0.3,
+    "action": "disambiguate",
+    "ok": true
+  },
+  {
+    "repo": "lodash/lodash",
+    "task": "Review code quality và refactor file lodash.merge.ts cho maintainability",
+    "expected": "code-review",
+    "got": "code-review",
+    "secondary": [
+      "scout"
+    ],
+    "confidence": 1,
+    "action": "route",
+    "ok": true
+  },
+  {
+    "repo": "puppeteer/puppeteer",
+    "task": "Scrape product list từ website example.com, extract links và take screenshots",
+    "expected": "browser-automation",
+    "got": "browser-automation",
+    "secondary": [],
+    "confidence": 1,
+    "action": "route",
+    "ok": true
+  },
+  {
+    "repo": "vitejs/vite",
+    "task": "Config Vite cho React project với tailwind config",
+    "expected": "web-frameworks",
+    "got": "web-frameworks",
+    "secondary": [
+      "frontend-development"
+    ],
+    "confidence": 1,
+    "action": "route",
+    "ok": true
+  },
+  {
+    "repo": "kubernetes/kubernetes",
+    "task": "Deploy ứng dụng lên production server với Docker và setup CI/CD",
+    "expected": "deploy",
+    "got": "deploy",
+    "secondary": [
+      "security-scan"
+    ],
+    "confidence": 1,
+    "action": "route",
+    "ok": true
+  },
+  {
+    "repo": "snyk/snyk",
+    "task": "Scan vulnerability trong dependencies, kiểm tra có lộ secret nào không",
+    "expected": "security-scan",
+    "got": "security-scan",
+    "secondary": [
+      "backend-development"
+    ],
+    "confidence": 1,
+    "action": "route",
+    "ok": true
+  },
+  {
+    "repo": "facebook/jest",
+    "task": "Viết unit test với Jest, tăng test coverage cho src/utils/parser.ts",
+    "expected": "test",
+    "got": "test",
+    "secondary": [],
+    "confidence": 1,
+    "action": "route",
+    "ok": true
+  },
+  {
+    "repo": "tailwindlabs/tailwindcss",
+    "task": "Thiết kế landing page responsive đẹp cho coffee shop với tailwind",
+    "expected": "ui-ux-pro-max",
+    "got": "ui-ux-pro-max",
+    "secondary": [
+      "frontend-development"
+    ],
+    "confidence": 1,
+    "action": "route",
+    "ok": true
+  },
+  {
+    "repo": "openai/openai-node",
+    "task": "Tích hợp OpenAI chat API và thêm image generation với DALL-E",
+    "expected": "ai-multimodal",
+    "got": "ai-multimodal",
+    "secondary": [
+      "backend-development"
+    ],
+    "confidence": 1,
+    "action": "route",
+    "ok": true
+  },
+  {
+    "repo": "sindresorhus/got",
+    "task": "Viết README cho package, update API documentation và changelog",
+    "expected": "docs",
+    "got": "docs",
+    "secondary": [],
+    "confidence": 1,
+    "action": "route",
+    "ok": true
+  },
+  {
+    "repo": "facebook/docusaurus",
+    "task": "Codebase này có gì? Tôi chưa biết bắt đầu từ đâu, explore codebase giúp",
+    "expected": "scout",
+    "got": "scout",
+    "secondary": [
+      "ask"
+    ],
+    "confidence": 1,
+    "action": "route",
+    "ok": true
+  },
+  {
+    "repo": "anyrepo/unknown",
+    "task": "Commit thay đổi với conventional commit và tạo PR lên branch main",
+    "expected": "git",
+    "got": "git",
+    "secondary": [
+      "code-review"
+    ],
+    "confidence": 1,
+    "action": "route",
+    "ok": true
+  }
+]

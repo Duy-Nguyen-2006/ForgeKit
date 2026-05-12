@@ -1,0 +1,22 @@
+[
+  { "repo": "facebook/react", "task": "Fix lỗi TypeError ở file packages/react-reconciler/src/ReactFiberBeginWork.js khi build production", "expected": "fix" },
+  { "repo": "microsoft/vscode", "task": "Debug tại sao extension activation không chạy được trên Linux, tìm root cause", "expected": "ck-debug" },
+  { "repo": "vercel/next.js", "task": "Setup Next.js App Router cho example app trong examples/with-tailwindcss", "expected": "web-frameworks" },
+  { "repo": "expressjs/express", "task": "Tạo REST API endpoint POST /users với middleware validate request body", "expected": "backend-development" },
+  { "repo": "prisma/prisma", "task": "Tạo migration thêm bảng orders và add index trên user_id", "expected": "databases" },
+  { "repo": "stripe/stripe-node", "task": "Thêm Stripe checkout flow cho monthly subscription recurring billing", "expected": "payment-integration" },
+  { "repo": "jaredhanson/passport", "task": "Implement OAuth login với Google, setup session management JWT", "expected": "auth" },
+  { "repo": "microsoft/playwright", "task": "Viết playwright tests for login page tại tests/login.spec.ts", "expected": "web-testing" },
+  { "repo": "shadcn-ui/ui", "task": "Tạo React component dropdown với dark mode support", "expected": "frontend-development" },
+  { "repo": "lodash/lodash", "task": "Review code quality và refactor file lodash.merge.ts cho maintainability", "expected": "code-review" },
+  { "repo": "puppeteer/puppeteer", "task": "Scrape product list từ website example.com, extract links và take screenshots", "expected": "browser-automation" },
+  { "repo": "vitejs/vite", "task": "Config Vite cho React project với tailwind config", "expected": "web-frameworks" },
+  { "repo": "kubernetes/kubernetes", "task": "Deploy ứng dụng lên production server với Docker và setup CI/CD", "expected": "deploy" },
+  { "repo": "snyk/snyk", "task": "Scan vulnerability trong dependencies, kiểm tra có lộ secret nào không", "expected": "security-scan" },
+  { "repo": "facebook/jest", "task": "Viết unit test với Jest, tăng test coverage cho src/utils/parser.ts", "expected": "test" },
+  { "repo": "tailwindlabs/tailwindcss", "task": "Thiết kế landing page responsive đẹp cho coffee shop với tailwind", "expected": "ui-ux-pro-max" },
+  { "repo": "openai/openai-node", "task": "Tích hợp OpenAI chat API và thêm image generation với DALL-E", "expected": "ai-multimodal" },
+  { "repo": "sindresorhus/got", "task": "Viết README cho package, update API documentation và changelog", "expected": "docs" },
+  { "repo": "facebook/docusaurus", "task": "Codebase này có gì? Tôi chưa biết bắt đầu từ đâu, explore codebase giúp", "expected": "scout" },
+  { "repo": "anyrepo/unknown", "task": "Commit thay đổi với conventional commit và tạo PR lên branch main", "expected": "git" }
+]
