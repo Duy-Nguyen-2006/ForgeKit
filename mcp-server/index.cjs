@@ -338,6 +338,36 @@ server.tool(
   }
 );
 
+// ─── Self-Test Mode ────────────────────────────────────────────────
+function runSelfTest() {
+  const checks = [
+    ['route function is available', typeof route === 'function'],
+    ['scoreIntent function is available', typeof scoreIntent === 'function'],
+    ['routing table is populated', ROUTING_TABLE && Object.keys(ROUTING_TABLE).length > 0],
+  ];
+
+  const sample = route('fix the failing tests');
+  checks.push(['sample intent routes to a skill', Boolean(sample && sample.primary && sample.primary !== 'none')]);
+  checks.push(['sample route has numeric confidence', typeof sample.confidence === 'number']);
+
+  const failures = checks.filter(([, ok]) => !ok);
+  for (const [label, ok] of checks) {
+    process.stdout.write(`${ok ? '✓' : '✗'} ${label}\n`);
+  }
+
+  if (failures.length > 0) {
+    process.stderr.write(`[forgekit-mcp] Self-test failed: ${failures.length} check(s) failed\n`);
+    process.exit(1);
+  }
+
+  process.stdout.write(`[forgekit-mcp] Self-test passed — ${checks.length} checks, ${Object.keys(ROUTING_TABLE).length} routed skills\n`);
+}
+
+if (process.argv.includes('--test')) {
+  runSelfTest();
+  process.exit(0);
+}
+
 // ─── Start Server ─────────────────────────────────────────────────
 async function main() {
   const transport = new StdioServerTransport();
